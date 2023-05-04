@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>Vue First Project</title>
+  </head>
+  <body>
+    <section id="app" class="container">
+      <label>Goal</label>
+      <input type="text" id="goal"  v-model="enteredValue" />
+      <button v-on:click="addGoal">Add goal</button>
+
+      <ul>
+        <li v-for="item in goalsArray">{{ item }}</li>
+      </ul>
+    </section>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./script.js"></script>
+</html>
