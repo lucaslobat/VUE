@@ -1,15 +1,19 @@
-const app = Vue.createApp({
-    data() {
+Vue.createApp({
+    data () {
         return {
-            myGoal:"Be a good web developer",
-            myLink:"https://vuejs.org/"
+            miObjetivo: "Ser constante en el estudio",
+            miObjetivoA: "Dominar Vue.js",
+            miObjetivoB: "Poner esfuerzo",
+            miObjetivoC:"<h4>Aprender nuevas tecnologías</h4>",
+            miEnlace:"https://vuejs.org/"
         }
     },
-    methods:{
-        switchGoals (){
-            const randNumber = Math.random();
-            return randNumber < 0.5 ? "Master Vue.js" : "Be a pro"
+    methods: {
+        miFuncion() {
+            const randomNum = Math.floor(Math.random() * (2) + 1);
+            console.log(randomNum)
+            return randomNum <= 1 ? this.miObjetivoA : this.miObjetivoB;
         }
     }
-});
-app.mount('#user-goal');
+
+}).mount('#user-goal')
