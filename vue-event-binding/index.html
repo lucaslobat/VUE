@@ -22,6 +22,8 @@
       <button @click="rest(5)">Subtract 5</button>
       <p v-once>Starting value: {{counter}}</p>
       <p>Result: {{ counter }}</p>
+
+
       <form @submit.prevent="submitForm">
         <label>Enter your name: </label>
         <input type="text" v-model="name" />
