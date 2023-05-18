@@ -4,7 +4,7 @@ Vue.createApp({
       question: "",
       answer: "",
       title: "Learning watchers",
-      image: "",
+      image: ""
     };
   },
   watch: {
@@ -18,16 +18,22 @@ Vue.createApp({
     },
   },
   methods: {
+    // Función asíncrona
     async getAnswer() {
       this.answer = "Loading";
       try {
-        const result = await fetch("https://yesno.wtf/api");
-        const fetchedObj = await result.json();
-        this.answer = fetchedObj.answer;
-        this.image = fetchedObj.image;
+        const bruteResult = await fetch("https://yesno.wtf/api");
+        console.log(typeof(bruteResult));
+
+        const parsedResult = await bruteResult.json();
+        console.log(typeof(parsedResult));
+
+        //Probar desestructuración de objetos aqui. {this.answer, , this.image} = parsedResult;
+        this.answer = parsedResult.answer;
+        this.image = parsedResult.image;
       } catch (err) {
         this.answer = `Sorry. It wasnt possible to find your answer. ${err}`;
       }
-    },
+    }
   },
 }).mount("#app");
