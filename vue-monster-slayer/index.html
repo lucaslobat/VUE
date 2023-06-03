@@ -19,20 +19,31 @@
     <div id="game">
       <section id="monster" class="container">
         <h2>Monster Health</h2>
+
         <div class="healthbar">
-          <div 
-          :style="{width:monsterHealth}"
-          class="healthbar__value"></div>
+          <div
+            v-if="monsterHealth > 0"
+            class="healthbar__value"
+            :style="{width:`${monsterHealth}%`}"
+          ></div>
+          <div v-else class="healthbar__dead"></div>
         </div>
       </section>
+
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div
+            v-if="playerHealth"
+            class="healthbar__value"
+            :style="{width:`${playerHealth}%`}"
+          ></div>
+          <div v-else class="healthbar__dead"></div>
         </div>
       </section>
+
       <section id="controls">
-        <button @click="attack">ATTACK</button>
+        <button @click="playerAttack">ATTACK</button>
         <button>SPECIAL ATTACK</button>
         <button>HEAL</button>
         <button>SURRENDER</button>

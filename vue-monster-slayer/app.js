@@ -1,25 +1,36 @@
+const genRandomNumber = (maxPower) => {
+    let randomNumber = Math.floor(Math.random() * maxPower) + 1;
+    return randomNumber;
+
+}
+
 Vue.createApp(
     {
         data() {
             return  {
-                playerHealth:`${100}%`,
+                playerHealth:100,
                 monsterHealth:100,
-                attackDamage:0,
                 battleLog: []
                 
             }
         },
         methods: {
-            attack(){
-                this.attackDamage = Math.floor(Math.random() * 20) + 1;
-                let parsedMonsterHealth = parseFloat(this.monsterHealth);
+            playerAttack(){
+                const playerAttackDamage = genRandomNumber(20);
+                this.monsterHealth -= playerAttackDamage;
 
-                let newMonsterHealth = parsedMonsterHealth - this.attackDamage;
-                this.monsterHealth = `${newMonsterHealth}%`;
+                /* this.monsterAttack(); */
+                console.log(`Monster health:${this.playerHealth}`);
 
-                console.log(this.monsterHealth)
+            },
+            monsterAttack(){
+                const monsterAttackDamage = genRandomNumber(40);
+                this.playerHealth -= monsterAttackDamage;
+                console.log(`Player health:${this.playerHealth}`);
 
-            }
+
+
+            },
         }
     }
 ).mount('#game');
