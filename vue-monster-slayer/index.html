@@ -24,9 +24,8 @@
           <div
             v-if="monsterHealth > 0"
             class="healthbar__value"
-            :style="{width:`${monsterHealth}%`}"
+            :style="dynamicWidthMonster"
           ></div>
-          <div v-else class="healthbar__dead"></div>
         </div>
       </section>
 
@@ -34,11 +33,10 @@
         <h2>Your Health</h2>
         <div class="healthbar">
           <div
-            v-if="playerHealth"
+            v-if="playerHealth > 0"
             class="healthbar__value"
-            :style="{width:`${playerHealth}%`}"
+            :style="dynamicWidthPlayer"
           ></div>
-          <div v-else class="healthbar__dead"></div>
         </div>
       </section>
 
@@ -50,7 +48,8 @@
       </section>
       <section v-if="battleLog.length > 0 " id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul v-for ="log in battleLog"> {{log.text}}</ul>
+        <ul v-else >{{gameOverMessage}}</ul>
       </section>
       <section v-else>
         <p>There's no log to show at this moment.</p>
