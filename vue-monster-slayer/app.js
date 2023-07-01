@@ -27,6 +27,13 @@ Vue.createApp({
       const attackDamage = genRandomNum(5, 16) * 2;
       this.monsterHealth -= attackDamage;
     },
+    healPlayer() {
+      this.roundCounter++;
+      const healValue = genRandomNum(8, 20);
+      this.playerHealth + healValue > 100
+        ? (this.playerHealth = 100)
+        : (this.playerHealth += healValue);
+    },
   },
   computed: {
     monsterBarWidth() {
@@ -35,8 +42,8 @@ Vue.createApp({
     playerBarWidth() {
       return { width: `${this.playerHealth}%` };
     },
-    activateSpecialAttack(){
-        return this.roundCounter % 3 !== 0
-    }
+    activateSpecialAttack() {
+      return this.roundCounter % 3 !== 0;
+    },
   },
 }).mount("#game");
