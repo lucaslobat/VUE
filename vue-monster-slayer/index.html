@@ -20,30 +20,27 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value" :style="monsterBarWidth">
-            {{monsterHealth}}
-          </div>
+          <div class="healthbar__value" :style="monsterBarWidth"></div>
         </div>
       </section>
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value" :style="heroBarWidth">
-            {{heroHealth}}
-          </div>
+          <div class="healthbar__value" :style="heroBarWidth"></div>
         </div>
       </section>
-      <section class="container">
-        <h2 v-if="gameOverMessage">Game over</h2>
+      <section class="container" v-if="gameOverMessage">
+        <h2>Game over</h2>
         <span>{{gameOverMessage}}</span>
+        <button @click="newGame">New game</button>
       </section>
-      <section v-if ="!gameOverMessage" id="controls">
+      <section v-if="!gameOverMessage" id="controls">
         <button @click="heroAttack">ATTACK</button>
         <button :disabled="activateSpecialAttack" @click="specialAttack">
           SPECIAL ATTACK
         </button>
         <button @click="healHero">HEAL</button>
-        <button>SURRENDER</button>
+        <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
