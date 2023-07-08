@@ -1,7 +1,7 @@
 <template>
   <li class="friend-card">
-    <h2>{{ name }} {{isFriendFavorite ? "[Favorite]" : ""}}</h2>
-    <button class="card-button" @click="toggleFavorite">Toggle favorite</button>
+    <h2>{{ name }} {{isFavorite ? "[Favorite]" : ""}}</h2>
+    <button class="card-button" @click="toggleFavoriteKey">Toggle favorite</button>
     <button class="card-button" @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} details
     </button>
@@ -15,7 +15,12 @@
 <script>
 export default {
   /* props: ["name", "phoneNumber", "emailAddress","isFavorite"] */
+  /* PROPERTIES */
   props: {
+    id: {
+      type:String,
+      required:true
+    },
     name: {
       type:String,
       required:true
@@ -28,18 +33,24 @@ export default {
     }
 
   },
+
+  /* CUSTOM EVENTS */
+  emits: ["toggle-favorite-key"],
+
+  /* VARIABLES */
   data() {
     return {
       detailsAreVisible: false,
-      isFriendFavorite: this.isFavorite
     };
   },
+
+  /* METHODS */
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
-    toggleFavorite(){
-      this.isFriendFavorite = !this.isFriendFavorite;
+    toggleFavoriteKey(){
+      this.$emit("toggle-favorite-key",this.id)
     }
   },
 };

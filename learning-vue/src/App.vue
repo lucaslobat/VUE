@@ -4,11 +4,13 @@
     <ul class="unordered-list">
       <friend-contact-card
         v-for="friend in friends"
+        :id="friend.id"
         :key="friend.id"
         :name="friend.name"
         :email-address="friend.email"
         :phone-number="friend.phone"
         :is-favorite="friend.isFavorite"
+        @toggle-favorite-key="toggleFavoriteKey"
       />
     </ul>
   </section>
@@ -36,7 +38,12 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    toggleFavoriteKey(friendId){
+      const indentifiedFriend = this.friends.find( friend => friend.id === friendId);
+      indentifiedFriend.isFavorite = !indentifiedFriend.isFavorite;
+    }
+  },
 };
 </script>
 
