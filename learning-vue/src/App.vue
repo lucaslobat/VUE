@@ -3,16 +3,13 @@
     <h2>My friends</h2>
     <ul class="unordered-list">
       <friend-contact-card
-        name="Mario Gomez"
-        email-address="mariog@gmail.com"
-        phone-number="165 176 394"
-      ></friend-contact-card>
-      <friend-contact-card
-        name="Elisa Mataraz"
-        email-address="elisam@gmail.com"
-        phone-number="645 787 839"
-        is-favorite="true"
-      ></friend-contact-card>
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :email-address="friend.email"
+        :phone-number="friend.phone"
+        :is-favorite="friend.isFavorite"
+      />
     </ul>
   </section>
 </template>
@@ -20,7 +17,24 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      friends: [
+        {
+          id: "mariog",
+          name: "Mario Gomez",
+          email: "mariog@gmail.com",
+          phone: "165 176 394",
+          isFavorite: false,
+        },
+        {
+          id: "elisam",
+          name: "Elisa Matara",
+          email: "elisam@gmail.com",
+          phone: "645 787 839",
+          isFavorite: false,
+        },
+      ],
+    };
   },
   methods: {},
 };

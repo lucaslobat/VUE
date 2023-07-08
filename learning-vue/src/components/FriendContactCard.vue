@@ -1,6 +1,6 @@
 <template>
   <li class="friend-card">
-    <h2>{{ name }} {{isFriendFavorite ? "(Favorite)" : ""}}</h2>
+    <h2>{{ name }} {{isFriendFavorite ? "[Favorite]" : ""}}</h2>
     <button class="card-button" @click="toggleFavorite">Toggle favorite</button>
     <button class="card-button" @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} details
@@ -13,13 +13,25 @@
 </template>
 
 <script>
-
 export default {
-  props: ["name", "phoneNumber", "emailAddress","isFavorite"],
+  /* props: ["name", "phoneNumber", "emailAddress","isFavorite"] */
+  props: {
+    name: {
+      type:String,
+      required:true
+    },
+    phoneNumber:String,
+    emailAddress:String,
+    isFavorite: {
+      type:Boolean,
+      required:false
+    }
+
+  },
   data() {
     return {
       detailsAreVisible: false,
-      isFriendFavorite: this.isFavorite === "true"
+      isFriendFavorite: this.isFavorite
     };
   },
   methods: {
