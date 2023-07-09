@@ -46,7 +46,8 @@ export default {
       indentifiedFriend.isFavorite = !indentifiedFriend.isFavorite;
     },
     addFriend(friendObject){
-      this.friends = [...this.friends,friendObject];
+      this.friends.push(friendObject);
+      console.log(this.friends);
     }
   },
 };

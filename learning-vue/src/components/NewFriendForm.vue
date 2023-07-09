@@ -8,14 +8,22 @@
     <input id="friend-name" type="text" v-model="this.friendObject.name" />
 
     <label for="friend-email">Email adress </label>
-    <input id="friend-email" type="text" v-model="this.friendObject.emailAddress" />
+    <input
+      id="friend-email"
+      type="text"
+      v-model="this.friendObject.email"
+    />
 
     <label for="friend-phone">Phone number </label>
-    <input id="friend-id" type="text" v-model="this.friendObject.phoneNumber" />
+    <input id="friend-id" type="string" v-model="this.friendObject.phone" />
 
     <div>
       <label for="friend-isFavorite">Favorite</label>
-      <input id="friend-isFavorite" type="checkbox" v-model="this.friendObject.isFavorite" />
+      <input
+        id="friend-isFavorite"
+        type="checkbox"
+        v-model="this.friendObject.isFavorite"
+      />
     </div>
     <button type="submit" class="generic-button">Submit</button>
   </form>
@@ -23,22 +31,28 @@
 
 <script>
 export default {
+  emits: ["submit-new-friend-form"],
   data() {
     return {
       friendObject: {
         id: "",
         name: "",
-        emailAddress: "",
-        phoneNumber: "",
+        email: "",
+        phone: "",
         isFavorite: false,
       },
     };
   },
   methods: {
     sendForm() {
-      this.$emit(
-        "submit-new-friend-form",this.friendObject
-      );
+      this.$emit("submit-new-friend-form", this.friendObject);
+      this.friendObject = {
+        id: "",
+        name: "",
+        email: "",
+        phone: "",
+        isFavorite: false,
+      }
     },
   },
 };
@@ -48,8 +62,8 @@ export default {
 .friend-form {
   display: flex;
   flex-direction: column;
-  border: 0.1rem solid black;
   padding: 2rem;
   gap: 0.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 </style>
