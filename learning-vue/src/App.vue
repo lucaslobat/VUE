@@ -2,6 +2,8 @@
   <section>
     <h2>My friends</h2>
     <ul class="unordered-list">
+      <new-friend-form
+      @submit-new-friend-form="addFriend"/>
       <friend-contact-card
         v-for="friend in friends"
         :id="friend.id"
@@ -42,6 +44,9 @@ export default {
     toggleFavoriteKey(friendId){
       const indentifiedFriend = this.friends.find( friend => friend.id === friendId);
       indentifiedFriend.isFavorite = !indentifiedFriend.isFavorite;
+    },
+    addFriend(friendObject){
+      this.friends = [...this.friends,friendObject];
     }
   },
 };
@@ -63,5 +68,13 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+}
+
+.generic-button {
+  padding: 0.5rem;
+  background-color: #e96136;
+  border-radius: 0.2rem;
+  color: #ebebeb;
+  border: none;
 }
 </style>

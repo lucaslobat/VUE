@@ -1,8 +1,8 @@
 <template>
   <li class="friend-card">
     <h2>{{ name }} {{isFavorite ? "[Favorite]" : ""}}</h2>
-    <button class="card-button" @click="toggleFavoriteKey">Toggle favorite</button>
-    <button class="card-button" @click="toggleDetails">
+    <button class="generic-button" @click="toggleFavoriteKey">Toggle favorite</button>
+    <button class="generic-button" @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} details
     </button>
     <ul v-if="detailsAreVisible">
@@ -70,13 +70,7 @@ export default {
   gap: 1rem;
 }
 
-.card-button {
-  padding: 0.5rem;
-  background-color: #e96136;
-  border-radius: 0.2rem;
-  color: #ebebeb;
-  border: none;
-}
+
 
 ul {
   list-style: none;
