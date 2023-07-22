@@ -1,18 +1,13 @@
 <template>
   <section>
-    <h2>My friends</h2>
-    <ul class="unordered-list">
-      <new-friend-form
-      @submit-new-friend-form="addFriend"/>
-      <friend-contact-card
+    <header>
+      <h1>My Friends</h1>
+    </header>
+    <ul>
+      <FriendContact
         v-for="friend in friends"
-        :id="friend.id"
         :key="friend.id"
-        :name="friend.name"
-        :email-address="friend.email"
-        :phone-number="friend.phone"
-        :is-favorite="friend.isFavorite"
-        @toggle-favorite-key="toggleFavoriteKey"
+        v-bind = "friend"
       />
     </ul>
   </section>
@@ -24,31 +19,19 @@ export default {
     return {
       friends: [
         {
-          id: "mariog",
-          name: "Mario Gomez",
-          email: "mariog@gmail.com",
-          phone: "165 176 394",
-          isFavorite: false,
+          id: "manuel",
+          name: "Manuel Lorenz",
+          phone: "0123 45678 90",
+          email: "manuel@localhost.com",
         },
         {
-          id: "elisam",
-          name: "Elisa Matara",
-          email: "elisam@gmail.com",
-          phone: "645 787 839",
-          isFavorite: false,
+          id: "julie",
+          name: "Julie Jones",
+          phone: "0987 654421 21",
+          email: "julie@localhost.com",
         },
       ],
     };
-  },
-  methods: {
-    toggleFavoriteKey(friendId){
-      const indentifiedFriend = this.friends.find( friend => friend.id === friendId);
-      indentifiedFriend.isFavorite = !indentifiedFriend.isFavorite;
-    },
-    addFriend(friendObject){
-      this.friends.push(friendObject);
-      console.log(this.friends);
-    }
   },
 };
 </script>
@@ -56,26 +39,57 @@ export default {
 <style>
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+}
+html {
+  font-family: "Jost", sans-serif;
 }
 body {
-  background-color: rgba(220, 220, 220, 255);
+  margin: 0;
 }
-
-.unordered-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+header {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem auto;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #58004d;
+  color: white;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
 }
-
-.generic-button {
-  padding: 0.5rem;
-  background-color: #e96136;
-  border-radius: 0.2rem;
-  color: #ebebeb;
-  border: none;
+#app ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#app li {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 1rem auto;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
+}
+#app h2 {
+  font-size: 2rem;
+  border-bottom: 4px solid #ccc;
+  color: #58004d;
+  margin: 0 0 1rem 0;
+}
+#app button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #ff0077;
+  background-color: #ff0077;
+  color: white;
+  padding: 0.05rem 1rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+}
+#app button:hover,
+#app button:active {
+  background-color: #ec3169;
+  border-color: #ec3169;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 </style>
