@@ -7,7 +7,8 @@
       <FriendContact
         v-for="friend in friends"
         :key="friend.id"
-        v-bind = "friend"
+        v-bind="friend"
+        @toggle-favorite="toggleFavorite"
       />
     </ul>
   </section>
@@ -23,15 +24,25 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: false,
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavorite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavorite(friendContactId) {
+      const identifiedFriendObject = this.friends.find(
+        (friend) => friend.id === friendContactId
+      );
+      identifiedFriendObject.isFavorite = !identifiedFriendObject.isFavorite;
+    },
   },
 };
 </script>
