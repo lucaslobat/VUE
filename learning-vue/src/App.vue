@@ -3,6 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <NewFriendForm></NewFriendForm>
     <ul>
       <FriendContact
         v-for="friend in friends"
