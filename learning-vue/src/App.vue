@@ -10,6 +10,7 @@
         :key="friend.id"
         v-bind="friend"
         @toggle-favorite="toggleFavorite"
+        @delete-contact="deleteContact"
       />
     </ul>
   </section>
@@ -47,7 +48,9 @@ export default {
     saveFriendObject(friendObject){
       const newFriend = {...friendObject,id:this.friends.length.toString() }
       this.friends.push(newFriend);
-      console.log(this.friends);
+    },
+    deleteContact(contactId){
+      this.friends = this.friends.filter((friend) => friend.id !== contactId);
     }
   },
 };

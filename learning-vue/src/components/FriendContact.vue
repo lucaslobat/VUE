@@ -5,6 +5,7 @@
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
     </button>
     <button @click="toggleFavoriteEvent">Toggle favorite</button>
+    <button @click="deleteContact">Delete</button>
     <ul v-if="detailsAreVisible">
       <li>
         <strong>Phone:</strong>
@@ -21,7 +22,7 @@
 <script>
 export default {
   props: ["id", "name", "phone", "email", "isFavorite"],
-  emits: ["toggle-favorite"],
+  emits: ["toggle-favorite","delete-contact"],
   
   data() {
     return {
@@ -35,6 +36,9 @@ export default {
     toggleFavoriteEvent() {
       this.$emit("toggle-favorite", this.id);
     },
+    deleteContact(){
+      this.$emit('delete-contact',this.id);
+    }
   },
 };
 </script>
