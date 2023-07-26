@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent class="new-friend-form flex">
+  <form @submit.prevent="submitData" class="new-friend-form flex">
     <div>
       <label for="friend-name">Friend's name</label>
     </div>
@@ -7,7 +7,7 @@
     <div>
       <label for="friend-phone">Friend's phone number</label>
     </div>
-    <input id="friend-phone" type="text" v-model="friendInformation.phone" />
+    <input id="friend-phone" type="tel" v-model="friendInformation.phone" />
     <div>
       <label for="friend-email">Friend email address</label>
     </div>
@@ -20,7 +20,7 @@
         v-model="friendInformation.isFavorite"
       />
     </div>
-    <button @click="saveFriendObject">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </template>
 <script>
@@ -37,7 +37,7 @@ export default {
     };
   },
   methods: {
-    saveFriendObject() {
+    submitData() {
       this.$emit('save-friend-object',this.friendInformation);
       this.friendInformation = {
         id:"",

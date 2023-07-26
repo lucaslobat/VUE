@@ -3,7 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
-    <NewFriendForm @save-friend-object="saveFriendObject"></NewFriendForm>
+    <NewFriendForm @save-friend-object="saveFriendObject"/>
     <ul>
       <FriendContact
         v-for="friend in friends"
@@ -21,14 +21,14 @@ export default {
     return {
       friends: [
         {
-          id: "manuel",
+          id: "0",
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
           isFavorite: false,
         },
         {
-          id: "julie",
+          id: "1",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
@@ -45,7 +45,9 @@ export default {
       identifiedFriendObject.isFavorite = !identifiedFriendObject.isFavorite;
     },
     saveFriendObject(friendObject){
-      this.friends.push(friendObject);
+      const newFriend = {...friendObject,id:this.friends.length.toString() }
+      this.friends.push(newFriend);
+      console.log(this.friends);
     }
   },
 };
