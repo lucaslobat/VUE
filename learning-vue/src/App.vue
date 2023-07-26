@@ -3,7 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
-    <NewFriendForm></NewFriendForm>
+    <NewFriendForm @save-friend-object="saveFriendObject"></NewFriendForm>
     <ul>
       <FriendContact
         v-for="friend in friends"
@@ -44,6 +44,9 @@ export default {
       );
       identifiedFriendObject.isFavorite = !identifiedFriendObject.isFavorite;
     },
+    saveFriendObject(friendObject){
+      this.friends.push(friendObject);
+    }
   },
 };
 </script>
@@ -57,6 +60,10 @@ html {
 }
 body {
   margin: 0;
+}
+
+.flex {
+  display: flex;
 }
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
