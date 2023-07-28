@@ -4,9 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></ActiveElement>
-    <KnowledgeBase
-      @select-topic="activateTopic"
-    ></KnowledgeBase>
+    <KnowledgeBase></KnowledgeBase>
   </div>
 </template>
 
@@ -37,6 +35,7 @@ export default {
 
   methods: {
     activateTopic(topicId) {
+      console.log(topicId);
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
   },
@@ -44,6 +43,7 @@ export default {
   provide() {
     return {
       topics: this.topics,
+      activateTopic: this.activateTopic
     };
   },
 };
