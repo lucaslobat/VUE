@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader />
-    <badge-list></badge-list>
+    <BadgeList/>
     <UserInfo
       :full-name="activeUser.name"
       :info-text="activeUser.description"
@@ -10,18 +10,18 @@
   </div>
 </template>
 
-<script>
+<script> 
 import TheHeader from "./components/TheHeader.vue";
 import UserInfo from "./components/UserInfo.vue";
-
+import BadgeList from "./components/BadgeList.vue";
 export default {
-  // Componentes importados localmente
-  components: { TheHeader, UserInfo },
+  // Locally imported component
+  components: { TheHeader, UserInfo, BadgeList},
 
   data() {
     return {
       activeUser: {
-        name: "Maximilian Schwarzmüller",
+        name: "Lucas Lobato Botelho ",
         description: "Site owner and admin",
         role: "admin",
       },
@@ -37,5 +37,13 @@ html {
 
 body {
   margin: 0;
+}
+
+section {
+  margin: 2rem auto;
+  max-width: 30rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 1rem;
 }
 </style>
