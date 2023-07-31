@@ -1,20 +1,23 @@
 <template>
-  <section>
+  <WrapperCard>
     <div>
       <h3>{{ fullName }}</h3>
-      <BaseBadge :type="role" :caption="role.toUpperCase()"></BaseBadge>
+      <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
     </div>
     <p>{{ infoText }}</p>
-  </section>
+  </WrapperCard>
 </template>
 
 <script>
+import WrapperCard from "./slots/WrapperCard.vue";
+
 export default {
-  props: ['fullName', 'infoText', 'role'],
+  props: ["fullName", "infoText", "role"],
+  components: { WrapperCard },
 };
 </script>
 
-<style scoped>
+<style>
 section div {
   display: flex;
   justify-content: space-between;
