@@ -1,19 +1,21 @@
 <template>
   <WrapperCard>
-    <div>
+
+    <template #header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </div>
-    <p>{{ infoText }}</p>
+    </template>
+
+    <template #main>
+      <p>{{ infoText }}</p>
+    </template>
+
   </WrapperCard>
 </template>
 
 <script>
-import WrapperCard from "./slots/WrapperCard.vue";
-
 export default {
   props: ["fullName", "infoText", "role"],
-  components: { WrapperCard },
 };
 </script>
 

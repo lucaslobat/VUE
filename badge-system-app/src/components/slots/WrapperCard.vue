@@ -1,6 +1,11 @@
 <template>
   <section>
-    <slot />
+    <header>
+      <slot name="header"></slot>
+    </header>
+    <div>
+      <slot name="main"></slot>
+    </div>
   </section>
 </template>
 

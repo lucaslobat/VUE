@@ -1,14 +1,19 @@
 <template>
   <WrapperCard>
-    <h2>Available Badges</h2>
-    <ul>
-      <li>
-        <BaseBadge type="admin" caption="ADMIN"></BaseBadge>
-      </li>
-      <li>
-        <BaseBadge type="author" caption="AUTHOR"></BaseBadge>
-      </li>
-    </ul>
+    <template v-slot:header>
+      <h2>Available Badges</h2>
+    </template>
+
+    <template v-slot:main>
+      <ul>
+        <li>
+          <BaseBadge type="admin" caption="ADMIN"></BaseBadge>
+        </li>
+        <li>
+          <BaseBadge type="author" caption="AUTHOR"></BaseBadge>
+        </li></ul
+    ></template>
+
   </WrapperCard>
 </template>
 
