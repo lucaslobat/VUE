@@ -1,6 +1,6 @@
 <template>
   <WrapperCard>
-    <template v-slot:main>
+    <template #main>
       <ul>
         <li>
           <BaseBadge type="admin" caption="ADMIN"></BaseBadge>
