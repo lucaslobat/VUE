@@ -1,21 +1,24 @@
 <template>
   <section>
-    <header>
-      <slot name="header"></slot>
+    <header v-if="$slots.header">
+      <slot name="header">
+        <h2>The Header</h2>
+      </slot>
     </header>
-    <div>
+    <main>
       <slot name="main"></slot>
-    </div>
+    </main>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+};
 </script>
 
 <style scoped>
 header {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
