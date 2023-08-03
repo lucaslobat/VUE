@@ -3,7 +3,7 @@
   <WrapperCard>
     <template #header>
       <h3>{{ fullName }}</h3>
-      <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
+      <base-badge :type="role" :caption="role"></base-badge>
     </template>
 
     <template #main>
