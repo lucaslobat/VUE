@@ -14,6 +14,18 @@
       <Component :is="activeComponent"></Component>
     </KeepAlive>
 
+    <Modal>
+      <template #title>
+        <h2>Modal</h2>
+      </template>
+
+      <template #body>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate laborum ullam odio ea velit repudiandae,
+          magnam temporibus, saepe dolore a, officiis tempora accusantium. Facere porro incidunt dolores. Porro,
+          recusandae rerum!</div>
+      </template>
+    </Modal>
+
     <!--     <UserInfo
       :full-name="activeUser.name"
       :info-text="activeUser.description"
@@ -31,10 +43,11 @@ import UserInfo from "./components/UserInfo.vue";
 import BadgeList from "./components/BadgeList.vue";
 import CourseGoals from "./components/CourseGoals.vue";
 import WrapperCard from "./components/slots/WrapperCard.vue";
+import Modal from "./components/slots/Modal.vue";
 
 export default {
   // Locally imported component
-  components: { TheHeader, CourseGoals, UserInfo, WrapperCard, BadgeList },
+  components: { TheHeader, CourseGoals, UserInfo, WrapperCard, BadgeList, Modal },
 
   data() {
     return {
