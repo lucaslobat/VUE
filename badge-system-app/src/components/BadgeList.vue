@@ -7,9 +7,9 @@
         </li>
         <li>
           <BaseBadge type="author" caption="AUTHOR"></BaseBadge>
-        </li></ul
-    ></template>
-
+        </li>
+      </ul>
+    </template>
   </WrapperCard>
 </template>
 

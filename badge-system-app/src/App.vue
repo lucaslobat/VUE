@@ -4,15 +4,17 @@
 
     <!--         <BadgeList /> -->
     <WrapperCard>
-      <template #main>
-        <button @click="setActiveComponent('BadgeList')">User info</button> 
+      <template #header>
+        <button @click="setActiveComponent('BadgeList')">User info</button>
         <button @click="setActiveComponent('CourseGoals')">Course goals</button>
       </template>
     </WrapperCard>
 
-    <component :is="activeComponent"></component>
+    <KeepAlive>
+      <Component :is="activeComponent"></Component>
+    </KeepAlive>
 
-<!--     <UserInfo
+    <!--     <UserInfo
       :full-name="activeUser.name"
       :info-text="activeUser.description"
       :role="activeUser.role"
@@ -32,11 +34,11 @@ import WrapperCard from "./components/slots/WrapperCard.vue";
 
 export default {
   // Locally imported component
-  components: { TheHeader, CourseGoals, UserInfo, WrapperCard,BadgeList},
+  components: { TheHeader, CourseGoals, UserInfo, WrapperCard, BadgeList },
 
   data() {
     return {
-      activeComponent:'UserInfo',
+      activeComponent: "BadgeList",
       activeUser: {
         name: "Lucas Lobato Botelho ",
         description: "Site owner and admin",
@@ -44,12 +46,12 @@ export default {
       },
     };
   },
-  
+
   methods: {
-    setActiveComponent(componentName){
+    setActiveComponent(componentName) {
       this.activeComponent = componentName;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -60,13 +62,5 @@ html {
 
 body {
   margin: 0;
-}
-
-section {
-  margin: 2rem auto;
-  max-width: 30rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
 }
 </style>

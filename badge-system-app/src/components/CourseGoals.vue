@@ -9,6 +9,7 @@
           <slot :item="goal">{{ goal }}</slot>
         </li>
       </ul>
+      <div><label>Enter a new goal:</label> <input type="text" /></div>
     </template>
   </WrapperCard>
 </template>
