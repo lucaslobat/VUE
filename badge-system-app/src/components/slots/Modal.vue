@@ -9,7 +9,7 @@
             </slot>
 
             <slot>
-                <button>Close</button>
+                <button @click="closeModal">Close</button>
             </slot>
         </div>
     </dialog>
@@ -21,6 +21,9 @@ export default {
     methods: {
         showModal() {
             this.$refs.dialog.showModal();
+        },
+        closeModal(){
+            this.$refs.dialog.close();
         }
     },
     mounted() {
@@ -33,30 +36,13 @@ export default {
 
 <style>
 .modal {
-    display: flex;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    border-style: none;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    padding:2rem;
+    border-radius: 0.25rem;
+    z-index:10;
+    max-width:20%
 }
 
-.modal-content {
-    display: flex;
-    
-    flex-direction: column;
-    background-color: #fefefe;
-    padding: 2rem;
-    border-radius: 0.2rem;
-    max-width: 30rem;
-    max-height: 20rem;
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */ ;
 }
 </style>
