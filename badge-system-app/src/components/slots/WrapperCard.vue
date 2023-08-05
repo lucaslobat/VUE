@@ -6,14 +6,13 @@
       </slot>
     </header>
     <main class="buttons main_class">
-      <slot   name="main"></slot>
+      <slot name="main"></slot>
     </main>
   </section>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style scoped>
@@ -27,19 +26,17 @@ section {
 
 header {
   display: flex;
-  gap:0.8rem;
+  gap: 0.8rem;
   align-items: center;
 }
 
 .main_class {
   flex-direction: column;
-
-  
 }
-
 
 .buttons {
-  display:flex;
-  gap:0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
+
 </style>
