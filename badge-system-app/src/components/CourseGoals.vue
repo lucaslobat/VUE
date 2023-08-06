@@ -16,15 +16,17 @@
     </template>
   </WrapperCard>
 
-  <Modal v-if="isInputValid === false">
-    <template #title>
-      <h2>Invalid input</h2>
-    </template>
-    <template #body>
-      <p>Please enter a valid input</p>
-      <button @click="confirmError">Ok</button>
-    </template>
-  </Modal>
+  <teleport to="body">
+    <Modal v-if="isInputValid === false">
+      <template #title>
+        <h2>Invalid input</h2>
+      </template>
+      <template #body>
+        <p>Please enter a valid input</p>
+        <button @click="confirmError">Ok</button>
+      </template>
+    </Modal>
+  </teleport>
 </template>
 
 <script>
@@ -50,9 +52,9 @@ export default {
         this.isInputvalid = true;
       }
     },
-    confirmError(){
+    confirmError() {
       this.isInputValid = true;
-    }
+    },
   },
 };
 </script>
