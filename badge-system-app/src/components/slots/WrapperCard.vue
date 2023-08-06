@@ -18,7 +18,7 @@ export default {};
 <style scoped>
 section {
   margin: 1rem auto;
-  max-width: 30rem;
+  max-width: 50rem;
   border-radius: 0.3rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1.5rem;

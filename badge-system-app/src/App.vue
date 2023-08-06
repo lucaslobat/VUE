@@ -14,18 +14,6 @@
       <Component :is="activeComponent"></Component>
     </KeepAlive>
 
-    <Modal>
-      <template #title>
-        <h2>Modal</h2>
-      </template>
-
-      <template #body>
-        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate laborum ullam odio ea velit repudiandae,
-          magnam temporibus, saepe dolore a, officiis tempora accusantium. Facere porro incidunt dolores. Porro,
-          recusandae rerum!</div>
-      </template>
-    </Modal>
-
     <!--     <UserInfo
       :full-name="activeUser.name"
       :info-text="activeUser.description"

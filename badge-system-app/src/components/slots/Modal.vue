@@ -4,11 +4,9 @@
       <slot name="title"> </slot>
 
       <slot name="body">
-        <div>Modal body</div>
       </slot>
 
-      <slot>
-        <button @click="closeModal">Close</button>
+      <slot name="button">
       </slot>
     </div>
   </dialog>
@@ -16,13 +14,18 @@
 
 <script>
 export default {
-  props: ["isInputInvalid"],
   methods: {
-
+    showModal() {
+      this.$refs.dialog.showModal();
+    },
     closeModal() {
       this.$refs.dialog.close();
+      this.$emit('toggle-valid');
     },
-  }
+  },
+  mounted() {
+    this.showModal();
+  },
 };
 </script>
 
@@ -36,6 +39,6 @@ export default {
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 </style>
