@@ -1,9 +1,9 @@
 <template>
   <div class="base-card">
-    <slot name="header">
+    <slot name="cover">
     </slot>
 
-    <slot name="body">
+    <slot name="author">
     </slot>
   </div>
 </template>
@@ -15,5 +15,6 @@
   border-radius: 0.3rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1.5rem;
+  border:1px solid black;
 }
 </style>
