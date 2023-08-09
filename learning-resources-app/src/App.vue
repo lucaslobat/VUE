@@ -1,4 +1,5 @@
 <template>
+  <TheHeader></TheHeader>
   <div class="container">
     <ResourcesList :resources="storedResources"></ResourcesList>    
   </div>
@@ -6,10 +7,11 @@
 
 <script>
 import ResourcesList from "./components/resources/ResourcesList.vue";
+import TheHeader from "./components/layouts/TheHeader.vue"
 import cover1 from "./assets/images/book-covers/historiadelafilosofia-guillermofraile.jpg";
 import cover2 from "./assets/images/book-covers/historiadelafilosofia-felipemartinezmarzoa.jpg";
 export default {
-  components: { ResourcesList },
+  components: { ResourcesList,TheHeader },
   data() {
     return {
       storedResources: [
