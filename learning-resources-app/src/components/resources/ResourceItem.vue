@@ -1,13 +1,17 @@
-6<template>
+<template>
   <BaseCard>
     <template #cover>
-      <h3>{{ title }}</h3>
       <img :src="cover" alt="book" class="book_cover"/>
     </template>
 
-    <template #author>
+    <template #body>
+      <h5>{{ title }}</h5>
       <p>{{author}}</p>
       <p><a :href="link" target="_blank">See resource</a></p>
+    </template>
+
+    <template #footer>
+      <button>Delete</button>
     </template>
   </BaseCard>
 </template>
