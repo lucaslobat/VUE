@@ -21,6 +21,8 @@
   </div>
 </template>
 
+<script></script>
+
 <style scoped>
 .the_header {
   display: flex;

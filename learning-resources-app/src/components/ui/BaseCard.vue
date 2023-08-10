@@ -1,5 +1,5 @@
 <template>
-  <div class="flex base-card">
+  <div class="flex base_card">
     <slot name="cover">
     </slot>
 
@@ -11,11 +11,11 @@
 </template>
 
 <style scoped>
-.base-card {
+.base_card {
   gap:0.5rem;
   flex-direction: column;
-  max-width: 50rem;
-  align-items: center;
-  border:1px solid blue;
+  border:2px solid blue;
+  max-width:10rem;
+  text-align: center;
 }
 </style>

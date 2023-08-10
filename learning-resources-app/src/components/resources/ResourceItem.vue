@@ -5,7 +5,7 @@
     </template>
 
     <template #body>
-      <h5>{{ title }}</h5>
+      <p class="card_title">{{ title }}</p>
       <p>{{ author }}</p>
       <p><a :href="link" target="_blank">See resource</a></p>
     </template>
@@ -31,5 +31,10 @@ export default {
   width: 10rem;
   aspect-ratio: 1.2/2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.card_title {
+  font-size: 1rem;
+  font-weight: 500;
 }
 </style>
