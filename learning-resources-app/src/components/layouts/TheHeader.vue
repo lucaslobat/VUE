@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="the_header">
     <img
       class="logo"
       src="ICONS/bootstrap-reboot.svg"
@@ -22,7 +22,7 @@
 </template>
 
 <style scoped>
-.container {
+.the_header {
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -67,6 +67,10 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 a:visited {
   color: inherit;
 }
