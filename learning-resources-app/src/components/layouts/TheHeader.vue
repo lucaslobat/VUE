@@ -2,7 +2,6 @@
   <div class="the_header">
     <img
       class="logo"
-      src="ICONS/bootstrap-reboot.svg"
       alt="logo"
       height="30"
       width="30"
