@@ -1,8 +1,14 @@
 <template>
-  <button class="base_button">
+  <button :class="mode">
     <slot></slot>
   </button>
 </template>
+
+<script>
+export default {
+  props:["mode"]
+}
+</script>
 
 <style scoped>
 .base_button {
@@ -21,5 +27,15 @@
   background-color: #8a8a8a;
   -webkit-transition: color 0.3s ease;
   -webkit-transition: background-color 0.3s ease;
+}
+
+.flat {
+  background-color: transparent;
+  border: none;
+}
+
+.flat:hover,
+.flat:active {
+  background-color: #8a8a8a;
 }
 </style>

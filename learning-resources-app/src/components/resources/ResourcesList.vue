@@ -7,6 +7,7 @@
       :author="resource.author"
       :link="resource.link"
       :title="resource.title"
+      :genericCover="genericCover"
     >
     </ResourceItem>
   </div>
@@ -26,7 +27,6 @@ export default {
   border: 2px solid red;
   gap: 2rem;
   padding: 2rem;
-  background-color: #252a33;
   color: white;
   flex-wrap: wrap;
 }
