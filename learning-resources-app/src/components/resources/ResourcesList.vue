@@ -1,5 +1,5 @@
 <template>
-  <div class="flex resources_list">
+  <BaseContainer>
     <ResourceItem
       v-for="resource in resources"
       :key="resource.id"
@@ -10,7 +10,7 @@
       :genericCover="genericCover"
     >
     </ResourceItem>
-  </div>
+  </BaseContainer>
 </template>
 
 <script>
@@ -23,11 +23,8 @@ export default {
 </script>
 
 <style scoped>
-.resources_list {
-  border: 2px solid red;
-  gap: 2rem;
-  padding: 2rem;
-  color: white;
+div[data-v-284f67ea]{
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 </style>

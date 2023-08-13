@@ -38,7 +38,6 @@ a:visited {
 
 .container {
   margin: 1rem auto;
-  border: 2px solid yellow;
   max-width: 80rem;
   padding: 2rem;
 }

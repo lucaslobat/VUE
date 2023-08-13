@@ -3,7 +3,7 @@
     Resources list</BaseButton
   >
   <BaseButton @click="setActiveComponent('AddResource')" :mode="addResourceButtonMode"
-    >Add resource</BaseButton
+    >Create resource</BaseButton
   >
   <KeepAlive>
     <component :is="activeComponent"></component>

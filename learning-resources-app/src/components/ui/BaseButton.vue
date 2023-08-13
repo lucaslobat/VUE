@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.base_button {
+button {
   background-color: #d8d8d8;
   border-style: none;
   font-weight: 500;
@@ -23,7 +23,7 @@ export default {
   padding: 0.5rem 1rem;
 }
 
-.base_button:hover {
+button:hover {
   background-color: #8a8a8a;
   -webkit-transition: color 0.3s ease;
   -webkit-transition: background-color 0.3s ease;

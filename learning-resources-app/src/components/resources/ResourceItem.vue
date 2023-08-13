@@ -1,5 +1,5 @@
 <template>
-  <BaseContainer additionalClasses="resources_container">
+  <BaseContainer>
     <div><img :src="cover" alt="book" class="resource_cover" /></div>
 
     <div class="flex resource_body">
@@ -19,10 +19,14 @@ export default {
 
 <style scoped>
 
-.resource_container{
+div[data-v-78a28d39]{
   flex-direction: column;
-  max-width: 12rem;
-  border:2px solid blue;
+  max-width: 12.5rem;
+  gap: 0.5rem;
+  text-align: center;
+  padding:1.5rem;
+  color:black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 .resource_cover {
   width: 10rem;
