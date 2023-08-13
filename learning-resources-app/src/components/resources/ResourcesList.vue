@@ -7,7 +7,6 @@
       :author="resource.author"
       :link="resource.link"
       :title="resource.title"
-      :genericCover="genericCover"
     >
     </ResourceItem>
   </BaseContainer>

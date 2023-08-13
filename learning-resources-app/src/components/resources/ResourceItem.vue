@@ -12,8 +12,14 @@
 </template>
 
 <script>
+import genericCover from '../../assets/images/book-covers/generic-cover.jpg'
 export default {
-  props: ["author", "title", "link","cover"],
+  props: ["author", "title", "link"],
+  data(){
+    return {
+      cover: genericCover
+    }
+  }
 };
 </script>
 

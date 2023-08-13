@@ -1,11 +1,34 @@
 <template>
   <BaseContainer>
-    <form>
+    <form @submit.prevent="saveResource">
       <label class="form-label" for="title">Title</label>
-      <input class="form-input" type="text" id="title" name="title" required />
+      <input
+        class="form-input"
+        type="text"
+        id="title"
+        name="title"
+        required
+        v-model="resourceObject.title"
+      />
 
-      <label class="form-label" for="description">Description</label>
-      <textarea class="form-input" id="description" name="description" required></textarea>
+      <label class="form-label" for="author">Author</label>
+      <input
+        class="form-input"
+        type="text"
+        id="author"
+        name="author"
+        required
+        v-model="resourceObject.author"
+      />
+
+      <!--      <label class="form-label" for="description">Description</label>
+      <textarea
+        class="form-input"
+        id="description"
+        name="description"
+        required
+        :value="this.resourceObject.description"
+      ></textarea> -->
 
       <label class="form-label" for="link">Link</label>
       <input
@@ -14,6 +37,7 @@
         id="link"
         name="link"
         required
+        v-model="resourceObject.link"
       />
 
       <BaseButton type="submit">Add resource</BaseButton>
@@ -21,11 +45,35 @@
   </BaseContainer>
 </template>
 
-<style scoped>
+<script>
+export default {
+  data() {
+    return {
+      resourceObject: {
+        title: "",
+        link: "",
+        author: "",
+      },
+    };
+  },
 
+  methods: {
+    saveResource() {
+      this.addResource(this.resourceObject);
+      this.resourceObject.title = "";
+      this.resourceObject.link = "";
+      this.resourceObject.author = "";
+    },
+  },
+
+  inject: ['addResource']
+};
+</script>
+
+<style scoped>
 form {
-    width:50%;
-    margin: 1rem auto;
+  width: 50%;
+  margin: 1rem auto;
 }
 .form-input {
   display: block;
