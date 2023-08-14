@@ -18,7 +18,7 @@
 
   <teleport to="body">
     <Modal v-if="isInputValid === false">
-      <template #title>
+      <template #title >
         <h2>Invalid input</h2>
       </template>
       <template #body>
@@ -48,8 +48,6 @@ export default {
       const enteredGoal = this.$refs.enteredGoal.value;
       if (enteredGoal === "") {
         this.isInputValid = false;
-      } else {
-        this.isInputvalid = true;
       }
     },
     confirmError() {

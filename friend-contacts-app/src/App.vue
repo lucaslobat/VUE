@@ -50,6 +50,7 @@ export default {
       this.friends.push(newFriend);
     },
     deleteContact(contactId){
+      //All the elements friend.id that are not equal to  contactId are added to the new created array.
       this.friends = this.friends.filter((friend) => friend.id !== contactId);
     }
   },

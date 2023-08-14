@@ -40,8 +40,8 @@
       <BaseButton type="submit">Save resource</BaseButton>
     </form>
     <BaseModal @toggle-valid="toggleValid" v-if="!isFormValid">
-      <template #modalHeader> Warning </template>
-      <template #modalBody> You need to fill in all the spaces </template>
+      <template #modalHeader>Warning</template>
+      <template #modalBody>You need to fill in all the spaces</template>
     </BaseModal>
   </BaseContainer>
 </template>
