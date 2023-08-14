@@ -7,7 +7,6 @@
         type="text"
         id="title"
         name="title"
-        required
         v-model="resourceObject.title"
       />
 
@@ -17,7 +16,6 @@
         type="text"
         id="author"
         name="author"
-        required
         v-model="resourceObject.author"
       />
 
@@ -36,12 +34,15 @@
         type="url"
         id="link"
         name="link"
-        required
         v-model="resourceObject.link"
       />
 
-      <BaseButton type="submit">Add resource</BaseButton>
+      <BaseButton type="submit">Save resource</BaseButton>
     </form>
+    <BaseModal @toggle-valid="toggleValid" v-if="!isFormValid">
+      <template #modalHeader> Warning </template>
+      <template #modalBody> You need to fill in all the spaces </template>
+    </BaseModal>
   </BaseContainer>
 </template>
 
@@ -54,19 +55,31 @@ export default {
         link: "",
         author: "",
       },
+      isFormValid: true,
     };
   },
 
   methods: {
     saveResource() {
-      this.addResource(this.resourceObject);
-      this.resourceObject.title = "";
-      this.resourceObject.link = "";
-      this.resourceObject.author = "";
+      if (
+        this.resourceObject.title === "" ||
+        this.resourceObject.link === "" ||
+        this.resourceObject.author === ""
+      ) {
+        this.toggleValid();
+      } else {
+        this.addResource(this.resourceObject);
+        this.resourceObject.title = "";
+        this.resourceObject.link = "";
+        this.resourceObject.author = "";
+      }
     },
+    toggleValid(){
+      this.isFormValid = !this.isFormValid;
+    }
   },
 
-  inject: ['addResource']
+  inject: ["addResource"],
 };
 </script>
 

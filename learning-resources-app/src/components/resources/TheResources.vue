@@ -1,8 +1,13 @@
 <template>
-  <BaseButton @click="setActiveComponent('ResourcesList')" :mode="resourceListButtonMode">
+  <BaseButton
+    @click="setActiveComponent('ResourcesList')"
+    :mode="resourceListButtonMode"
+  >
     Resources list</BaseButton
   >
-  <BaseButton @click="setActiveComponent('AddResource')" :mode="addResourceButtonMode"
+  <BaseButton
+    @click="setActiveComponent('AddResource')"
+    :mode="addResourceButtonMode"
     >Create resource</BaseButton
   >
   <KeepAlive>
@@ -10,7 +15,7 @@
   </KeepAlive>
 </template>
 <script>
-import ResourcesList from "./ResourcesList.vue"
+import ResourcesList from "./ResourcesList.vue";
 import AddResource from "./AddResource.vue";
 
 export default {
@@ -59,25 +64,31 @@ export default {
     setActiveComponent(clickedButton) {
       this.activeComponent = clickedButton;
     },
-    addResource(resourceObject){
-      const newResource = {id:this.resourcesArray.length + 1, ...resourceObject}
-      this.resourcesArray.push(newResource)
-    }
+    addResource(resourceObject) {
+      const newResource = {
+        id: this.resourcesArray.length + 1,
+        ...resourceObject,
+      };
+      this.resourcesArray.push(newResource);
+    },
   },
   provide() {
     return {
       resources: this.resourcesArray,
-      addResource: this.addResource
+      addResource: this.addResource,
     };
   },
   computed: {
-    resourceListButtonMode(){
-      return this.activeComponent === "ResourcesList" ? "base_button" : "base_button flat"
+    resourceListButtonMode() {
+      return this.activeComponent === "ResourcesList"
+        ? "base_button"
+        : "base_button flat";
     },
-    addResourceButtonMode(){
-      return this.activeComponent === "AddResource" ? "base_button" : "base_button flat"
-    }
-  }
+    addResourceButtonMode() {
+      return this.activeComponent === "AddResource"
+        ? "base_button"
+        : "base_button flat";
+    },
+  },
 };
 </script>
-<layout></layout>

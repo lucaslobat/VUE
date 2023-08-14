@@ -1,5 +1,7 @@
 <template>
   <TheHeader></TheHeader>
+  <!-- The component TheResources offers two buttons that alternates between two components.
+       Also provides the resourcesArray and the addResource method -->
   <div class="container">
     <TheResources></TheResources>
   </div>
