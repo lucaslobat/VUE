@@ -25,7 +25,7 @@ export default {
       activeComponent: "ResourcesList",
       resourcesArray: [
         {
-          id: "978-8479142919",
+          id: "0",
           title: "Historia De La Filosofía I - Grecia y Roma",
           description:
             'Esta "Historia de la Filosofía" realizada por Guillermo Fraile (I-III) y Teófilo Urdánoz (IV-VIII) es ya una obra clásica en la BAC, alcanzando desde la aparición del primer volumen en 1956 numerosas reimpresiones. La constante y frecuente publicación de estos volúmenes es la mejor garantía de la buena acogida que esta importante obra ha tenido y tiene entre sus lectores.',
@@ -33,7 +33,7 @@ export default {
           author: "Guillermo Fraile",
         },
         {
-          id: "978-8479142911",
+          id: "1",
           title: "Historia de la Filosofía I",
           description:
             "La presente Historia de la Filosofía de Felipe Martínez Marzoa es una reelaboración de la obra del mismo título publicada por el autor en la Colección Fundamentos de esta editorial. En ella el profesor Martínez Marzoa se remite fundamentalmente a la obra original de los pensadores de que trata, y expone en cada caso la raíz histórica de los conceptos filosóficos básicos. La idea central del libro radica en que una historia de la filosofía ha de ser, ante todo, una investigación sobre la carta de naturaleza de sus propios conceptos. Nos encontramos ante un texto rigurosamente introductorio: no exige, por parte del lector, una previa cultura filosófica y filológica. Aunque si requiere, en cambio -puesto que intenta resolver cuestiones sin eludir dificultades-, una cierta aptitud para el esfuerzo intelectual.",
@@ -41,7 +41,7 @@ export default {
           author: "Felipe Martínez Marzoa",
         },
         {
-          id: "978-8479142919",
+          id: "2",
           title: "Historia De La Filosofía I - Grecia y Roma",
           description:
             'Esta "Historia de la Filosofía" realizada por Guillermo Fraile (I-III) y Teófilo Urdánoz (IV-VIII) es ya una obra clásica en la BAC, alcanzando desde la aparición del primer volumen en 1956 numerosas reimpresiones. La constante y frecuente publicación de estos volúmenes es la mejor garantía de la buena acogida que esta importante obra ha tenido y tiene entre sus lectores.',
@@ -50,7 +50,7 @@ export default {
           author: "Guillermo Fraile",
         },
         {
-          id: "978-8479142911",
+          id: "3",
           title: "Historia de la Filosofía I",
           description:
             "La presente Historia de la Filosofía de Felipe Martínez Marzoa es una reelaboración de la obra del mismo título publicada por el autor en la Colección Fundamentos de esta editorial. En ella el profesor Martínez Marzoa se remite fundamentalmente a la obra original de los pensadores de que trata, y expone en cada caso la raíz histórica de los conceptos filosóficos básicos. La idea central del libro radica en que una historia de la filosofía ha de ser, ante todo, una investigación sobre la carta de naturaleza de sus propios conceptos. Nos encontramos ante un texto rigurosamente introductorio: no exige, por parte del lector, una previa cultura filosófica y filológica. Aunque si requiere, en cambio -puesto que intenta resolver cuestiones sin eludir dificultades-, una cierta aptitud para el esfuerzo intelectual.",
@@ -71,11 +71,16 @@ export default {
       };
       this.resourcesArray.push(newResource);
     },
+    deleteResource(resourceId){
+      const resourceIndex = this.resourcesArray.findIndex(resource => resource.id === resourceId);
+      this.resourcesArray.splice(resourceIndex,1)
+    }
   },
   provide() {
     return {
       resources: this.resourcesArray,
       addResource: this.addResource,
+      deleteResource: this.deleteResource,
     };
   },
   computed: {

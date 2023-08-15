@@ -1,15 +1,20 @@
 <template>
-  <dialog ref="dialog">
-    <div class="modal-content">
-      <button class="close" id="closeModalBtn" @click="closeModal">&times;</button>
-      <h2><slot name="modalHeader">Modal header</slot></h2>
-      <p>
-        <slot name="modalBody"
-          >This is a simple modern modal using the &lt;dialog&gt; element.</slot
-        >
-      </p>
-    </div>
-  </dialog>
+  <teleport to="body">
+    <dialog ref="dialog">
+      <div class="modal-content">
+        <button class="close" id="closeModalBtn" @click="closeModal">
+          &times;
+        </button>
+        <h2><slot name="modalHeader">Modal header</slot></h2>
+        <p>
+          <slot name="modalBody"
+            >This is a simple modern modal using the &lt;dialog&gt;
+            element.</slot
+          >
+        </p>
+      </div>
+    </dialog>
+  </teleport>
 </template>
 
 <script>
@@ -20,13 +25,12 @@ export default {
     },
     closeModal() {
       this.$refs.dialog.close();
-      this.$emit('toggle-valid');
+      this.$emit("toggle-valid");
     },
   },
   mounted() {
     this.showModal();
   },
-
 };
 </script>
 

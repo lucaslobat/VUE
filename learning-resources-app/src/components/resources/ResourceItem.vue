@@ -6,7 +6,7 @@
       <p class="card_title">{{ title }}</p>
       <p>{{ author }}</p>
       <p><a :href="link" target="_blank">See resource</a></p>
-      <BaseButton> Delete </BaseButton>
+      <BaseButton @click="deleteResource(id)">Delete</BaseButton>
     </div>
   </BaseContainer>
 </template>
@@ -14,12 +14,13 @@
 <script>
 import genericCover from '../../assets/images/book-covers/generic-cover.jpg'
 export default {
-  props: ["author", "title", "link"],
+  props: ['author', 'title', 'link','id'],
   data(){
     return {
       cover: genericCover
     }
-  }
+  },
+  inject:['deleteResource']
 };
 </script>
 
