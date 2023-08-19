@@ -1,10 +1,29 @@
 <template>
   <div class="rating_buttons">
-    <button @click="selectActiveButton('poor')" type="button">Poor</button>
-    <button @click="selectActiveButton('average')" type="button">
+    <button
+      :class="{ active: activeButton === 'poor' }"
+      class="rating_button"
+      @click="selectActiveButton('poor')"
+      type="button"
+    >
+      Poor
+    </button>
+    <button
+      :class="{ active: activeButton === 'average' }"
+      class="rating_button"
+      @click="selectActiveButton('average')"
+      type="button"
+    >
       Average
     </button>
-    <button @click="selectActiveButton('great')" type="button">Great</button>
+    <button
+      :class="{ active: activeButton === 'great' }"
+      class="rating_button"
+      @click="selectActiveButton('great')"
+      type="button"
+    >
+      Great
+    </button>
   </div>
 </template>
 
@@ -19,7 +38,7 @@ export default {
   methods: {
     selectActiveButton(clickedButton) {
       this.activeButton = clickedButton;
-      this.$emit('update:modelValue',clickedButton);
+      this.$emit("update:modelValue", clickedButton);
     },
   },
 };
@@ -32,19 +51,19 @@ export default {
   padding: 1rem;
 }
 
-.rating_buttons button {
+.rating_button {
   border: 0.099rem solid gray;
   padding: 0.5rem 1rem;
   background-color: transparent;
   cursor: pointer;
 }
 
-.rating_buttons button:hover {
+.rating_button:hover {
   background-color: gray;
   color: white;
-}
+} 
 
-.rating_buttons button:focus {
+.active {
   background-color: gray;
   color: white;
 }
