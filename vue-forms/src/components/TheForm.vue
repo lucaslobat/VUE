@@ -97,6 +97,10 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <h2>Rate your experience</h2>
+      <RatingControl v-model="formObject.rating"></RatingControl>
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -104,7 +108,9 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
 export default {
+  components:{RatingControl},
   data() {
     return {
       formObject: {
@@ -113,7 +119,7 @@ export default {
         heardAbout: "",
         interest: [],
         how: null,
-        singleCheckbox: false,
+        rating:null
       },
 
       inputIsValid: null,
@@ -128,6 +134,7 @@ export default {
         heardAbout: "",
         interest: [],
         how: null,
+        rating:null
       };
     },
     inputValidation() {
