@@ -1,32 +1,42 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <!-- Input type text -->
+    <div class="form-control" :class="{invalid: inputIsValid === false}">
+      <p v-if="inputIsValid === false">Please enter a valid name</p>
       <label for="user-name">Your Name</label>
       <input
         id="user-name"
         name="user-name"
         type="text"
         v-model.trim="formObject.name"
+        @input="inputValidation"
+        @blur="inputValidation"
       />
     </div>
+
+    <!-- Input type number -->
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
       <input id="age" name="age" type="number" v-model="formObject.age" />
     </div>
+
+    <!-- Input type select -->
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
       <select id="referrer" name="referrer" v-model="formObject.heardAbout">
-        <option value="google">Google</option>
-        <option value="wom">Word of mouth</option>
-        <option value="newspaper">Newspaper</option>
+        <option disabled value="">Please select one</option>
+        <option>Google</option>
+        <option>Word of mouth</option>
+        <option>Newspaper</option>
       </select>
     </div>
+
+    <!-- Input type checkbox -->
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
         <input
           id="interest-news"
-          name="interest"
           type="checkbox"
           value="news"
           v-model="formObject.interest"
@@ -36,7 +46,6 @@
       <div>
         <input
           id="interest-tutorials"
-          name="interest"
           type="checkbox"
           value="tutorials"
           v-model="formObject.interest"
@@ -46,7 +55,6 @@
       <div>
         <input
           id="interest-nothing"
-          name="interest"
           type="checkbox"
           value="nothing"
           v-model="formObject.interest"
@@ -54,6 +62,8 @@
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
+
+    <!-- Input type radio -->
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
@@ -100,10 +110,13 @@ export default {
       formObject: {
         name: "",
         age: "",
-        heardAbout: "wom",
+        heardAbout: "",
         interest: [],
         how: null,
+        singleCheckbox: false,
       },
+
+      inputIsValid: null,
     };
   },
   methods: {
@@ -112,10 +125,17 @@ export default {
       this.formObject = {
         name: "",
         age: "",
-        heardAbout: "wom",
+        heardAbout: "",
         interest: [],
         how: null,
       };
+    },
+    inputValidation() {
+      if (this.formObject.name === "") {
+        this.inputIsValid = false;
+      } else {
+        this.inputIsValid = true;
+      }
     },
   },
 };
@@ -133,6 +153,14 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
+}
+
+.form-control.invalid input {
+  border: 0.1rem solid red;
+}
+
+.form-control.invalid label {
+  color:red;
 }
 
 label {
