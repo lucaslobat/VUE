@@ -59,14 +59,15 @@ export default {
     };
   },
   methods: {
-    submitSurvey() {
+    async submitSurvey() {
       if (this.enteredName === "" || !this.chosenRating) {
         this.invalidInput = true;
         return;
       } else {
-        this.invalidInput = false;
+        this.$emit("fetch-data", this.updateComponent);
 
-        fetch(
+        this.invalidInput = false;
+        await fetch(
           "https://vue-http-requests-2f3fb-default-rtdb.europe-west1.firebasedatabase.app/surveys.json",
           {
             method: "POST",
@@ -78,6 +79,7 @@ export default {
           }
         );
       }
+
       this.enteredName = "";
       this.chosenRating = null;
     },

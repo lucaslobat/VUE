@@ -5,7 +5,7 @@
         <span class="highlight">{{ name }}</span> rated the learning experience
         <span :class="ratingClass">{{ rating }}</span>
       </div>
-      <BaseButton>Delete item</BaseButton>
+      <BaseButton @click="deleteItem">Delete item</BaseButton>
     </p>
   </li>
 </template>
@@ -18,7 +18,15 @@ export default {
       return 'highlight rating--' + this.rating;
     },
   },
-};
+  methods: {
+    deleteItem(){
+      fetch(`https://vue-http-requests-2f3fb-default-rtdb.europe-west1.firebasedatabase.app/surveys/${this.id}.json`,{method:'DELETE'}).then(res => {
+        const parsedResult = res.json();
+        return console.log(parsedResult)
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
