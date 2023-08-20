@@ -42,7 +42,7 @@
           One or more input fields are invalid. Please check your provided data.
         </p>
         <div>
-          <base-button>Submit</base-button>
+          <BaseButton>Submit</BaseButton>
         </div>
       </form>
     </base-card>

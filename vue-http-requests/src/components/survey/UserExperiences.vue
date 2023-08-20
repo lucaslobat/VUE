@@ -3,13 +3,15 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-<!--         <base-button @click="getExperiences"
+        <!--         <base-button @click="getExperiences"
           >Load Submitted Experiences</base-button
         > -->
       </div>
-      <ul>
+      <div class="loading-spinner" v-if="isLoading"></div>
+      <ul v-else="!isLoading">
         <survey-result
           v-for="result in results"
+          :id="result.id"
           :key="result.id"
           :name="result.name"
           :rating="result.rating"
@@ -29,10 +31,12 @@ export default {
   data() {
     return {
       results: [],
+      isLoading: false,
     };
   },
   methods: {
     getExperiences() {
+      this.isLoading = true;
       fetch(
         "https://vue-http-requests-2f3fb-default-rtdb.europe-west1.firebasedatabase.app/surveys.json"
       )
@@ -59,7 +63,7 @@ export default {
           
           */
         .then((data) => {
-          const newResults = []
+          const newResults = [];
           for (const objectKey in data) {
             newResults.push({
               id: objectKey,
@@ -68,7 +72,8 @@ export default {
             });
           }
 
-          this.results = newResults
+          this.results = newResults;
+          this.isLoading = false;
         })
         .catch((err) => {
           return console.log(`Error in the request: ${err}`);
@@ -77,7 +82,7 @@ export default {
   },
   mounted() {
     this.getExperiences();
-  }
+  },
 };
 </script>
 
@@ -86,5 +91,24 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin:0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
