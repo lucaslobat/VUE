@@ -3,19 +3,20 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <!--         <base-button @click="getExperiences"
-          >Load Submitted Experiences</base-button
-        > -->
+        <base-button @click="getExperiences">Load Submitted Experiences</base-button>
       </div>
-      <div class="loading-spinner" v-if="isLoading"></div>
-      <ul v-else="!isLoading">
-        <survey-result
-          v-for="result in results"
-          :id="result.id"
-          :key="result.id"
-          :name="result.name"
-          :rating="result.rating"
-        ></survey-result>
+      <!-- If it is loading and there's no error message we show the animation -->
+      <div class="loading-spinner" v-if="isLoading && !errorMessage"></div>
+
+      <!-- If its not loading and there's no data in results we show a no data message -->
+      <p v-else-if="!isLoading && (!results || results.length === 0)">No data was found</p>
+
+      <p v-else-if="errorMessage">{{ errorMessage }}</p>
+
+      <!-- If its not loading and there's data in results we show the items -->
+      <ul v-else="!isLoading && results && results.length > 0">
+        <survey-result v-for="result in results" :id="result.id" :key="result.id" :name="result.name"
+          :rating="result.rating"></survey-result>
       </ul>
     </base-card>
   </section>
@@ -31,11 +32,13 @@ export default {
     return {
       results: [],
       isLoading: false,
+      errorMessage: null
     };
   },
   methods: {
     async getExperiences() {
       this.isLoading = true;
+      this.errorMessage = null;
       await fetch(
         "https://vue-http-requests-2f3fb-default-rtdb.europe-west1.firebasedatabase.app/surveys.json"
       )
@@ -75,10 +78,13 @@ export default {
           this.isLoading = false;
         })
         .catch((err) => {
-          return console.log(`Error in the request: ${err}`);
+          this.errorMessage = `The following error ocurred: ${err}`;
         });
     },
   },
+  mounted() {
+    this.getExperiences();
+  }
 };
 </script>
 
@@ -103,6 +109,7 @@ ul {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
