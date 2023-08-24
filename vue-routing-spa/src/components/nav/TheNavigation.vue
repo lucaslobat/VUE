@@ -3,10 +3,10 @@
     <nav>
       <ul>
         <li>
-          <RouterLink to="/teams"><button>Teams</button></RouterLink>
+          <RouterLink to="/teams">Teams</RouterLink>
         </li>
         <li>
-          <RouterLink to="users"><button>Users</button></RouterLink>
+          <RouterLink to="users">Users</RouterLink>
         </li>
       </ul>
     </nav>
@@ -38,7 +38,7 @@ li {
   margin: 0 2rem;
 }
 
-button {
+a {
   font: inherit;
   background: transparent;
   border: 1px solid transparent;
@@ -46,10 +46,12 @@ button {
   color: white;
   padding: 0.5rem 1.5rem;
   display: inline-block;
+  text-decoration: none;
 }
 
-button:hover,
-button:active {
+a:hover,
+a:active,
+a.active-route {
   color: #f1a80a;
   border-color: #f1a80a;
   background-color: #1a037e;

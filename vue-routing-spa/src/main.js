@@ -10,10 +10,11 @@ const app = createApp(App);
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/" , component: TeamsList },
+    { path: "/", component: TeamsList },
     { path: "/teams", component: TeamsList },
     { path: "/users", component: UserList },
   ],
+  linkActiveClass: "active-route",
 });
 
 app.use(router);
