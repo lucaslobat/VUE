@@ -1,6 +1,7 @@
 <template>
   <the-navigation ></the-navigation>
   <main>
+    <button @click="submitForm">Submit form</button>
     <RouterView></RouterView>
   </main>
 </template>
@@ -35,6 +36,11 @@ export default {
     };
   },
   methods: {
+    submitForm(){
+      setTimeout(() => {
+        this.$router.push('/users')
+      }, 2000)
+    }
   }
 };
 </script>
