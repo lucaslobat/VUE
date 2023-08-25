@@ -1,20 +1,17 @@
+<!-- This component renders a list of all the available teams. 
+  Receives the 'teams' variable from App.vue -->
 <template>
   <ul>
-    <teams-item
-      v-for="team in teams"
-      :key="team.id"
-      :name="team.name"
-      :member-count="team.members.length"
-    ></teams-item>
+    <TeamItem v-for="team in teams" :key="team.id" :name="team.name" :member-count="team.members.length"></TeamItem>
   </ul>
 </template>
 
 <script>
-import TeamsItem from './TeamsItem.vue';
+import TeamItem from './TeamItem.vue'
 
 export default {
   components: {
-    TeamsItem,
+    TeamItem,
   },
   inject: ['teams'],
 };

@@ -6,7 +6,7 @@
           <RouterLink to="/teams">Teams</RouterLink>
         </li>
         <li>
-          <RouterLink to="users">Users</RouterLink>
+          <RouterLink to="/users">Users</RouterLink>
         </li>
       </ul>
     </nav>
