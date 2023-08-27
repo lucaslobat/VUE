@@ -1,7 +1,7 @@
 <template>
   <the-navigation ></the-navigation>
   <main>
-    <button @click="submitForm">Submit form</button>
+    <!-- <button @click="submitForm">Submit form</button> -->
     <RouterView></RouterView>
   </main>
 </template>

@@ -1,8 +1,7 @@
-<!-- This component renders a list of all the available teams. 
-  Receives the 'teams' variable from App.vue -->
+<!-- This component renders a list of all the available teams. Receives the 'teams' varai -->
 <template>
   <ul>
-    <TeamItem v-for="team in teams" :key="team.id" :name="team.name" :member-count="team.members.length"></TeamItem>
+    <TeamItem v-for="team in teams" :key="team.id" :id="team.id" :name="team.name" :member-count="team.members.length"></TeamItem>
   </ul>
 </template>
 

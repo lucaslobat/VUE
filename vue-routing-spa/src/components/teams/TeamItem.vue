@@ -2,13 +2,23 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#">View Members</a>
+    <RouterLink :to='`teams/${currentId}`'>View Members</RouterLink>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'memberCount'],
+  props: ['name', 'memberCount','id'],
+  data(){
+    return {
+      currentId:this.id
+    }
+  },
+  computed: {
+    computedId(){
+      return `/teams/${this.currentId}`
+    }
+  }
 };
 </script>
 
@@ -38,7 +48,8 @@ a {
 }
 
 a:hover,
-a:active {
+a:active,
+.router-link-active {
   background-color: #220a8d;
 }
 </style>
