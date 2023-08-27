@@ -15,7 +15,7 @@ const router = createRouter({
     { path: "/teams", component: TeamsList },
     { path: "/users", component: UserList },
     //This route accepts dynamic values and render TeamMembers
-    { path: "/teams/:teamId", component: TeamMembers },
+    { path: "/teams/:teamId", component: TeamMembers, props:true},
   ],
   linkActiveClass: "active-route",
 });

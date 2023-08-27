@@ -2,17 +2,21 @@
   <the-navigation ></the-navigation>
   <main>
     <!-- <button @click="submitForm">Submit form</button> -->
+
+    <!-- Component matched by the route will be rendered here -->
     <RouterView></RouterView>
   </main>
 </template>
 
 <script>
 import TheNavigation from './components/nav/TheNavigation.vue';
+import TeamMembers from './components/teams/TeamMembers.vue';
 
 export default {
   components: {
     TheNavigation,
-  },
+    TeamMembers
+},
   data() {
     return {
       teams: [

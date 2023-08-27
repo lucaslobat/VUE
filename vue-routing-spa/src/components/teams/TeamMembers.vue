@@ -3,7 +3,8 @@
   <section>
     <h2>{{ currentTeamName }}</h2>
     <ul>
-      <user-item v-for="member in currentMembers" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
+      <user-item v-for="member in currentMembers" :key="member.id" :name="member.fullName"
+        :role="member.role"></user-item>
     </ul>
   </section>
 </template>
@@ -13,6 +14,7 @@ import UserItem from '../users/UserItem.vue';
 
 export default {
   inject: ['users', 'teams'],
+  props: ['teamId'],
   components: {
     UserItem
   },
@@ -22,32 +24,41 @@ export default {
       currentMembers: []
     };
   },
-  created() {
-    // Receives the dynamic parameter expected on the "routes" array and send by the URL.
-    const teamIdParam = this.$route.params.teamId;
+  methods: {
+    getMembers(param) {
 
-    // Iterates over the injected "teams" array and store the element which id property matches "teamIdParam"
-    const foundTeam = this.teams.find(element => element.id === teamIdParam);
+      // Receives the dynamic parameter expected on the "routes" array and send by the URL.
+      /*       const teamIdParam = param.teamId; */
 
-    // Grabs the foundTeam "members" property and stores it in variable.
-    const foundMembers = foundTeam.members;
+      if (param) {
+        // Iterates over the injected "teams" array and store the element which id property matches "teamIdParam"
+        const foundTeam = this.teams.find(element => element.id === param);
 
-    // Creates an array to store all the identified members of a determined team.
-    const identifiedMembers = [];
+        // Grabs the foundTeam "members" property and stores it in variable.
+        const foundMembers = foundTeam.members;
 
-    // Iterates over the injected "users" array, extracts those who match with the foundMembers array, and stores it into the "identifiedMembers" array.
-    for (const foundMembersElement of foundMembers) {
-      const foundUser = this.users.find(element => element.id === foundMembersElement);
-      identifiedMembers.push(foundUser);
+        // Creates an array to store all the identified members of a determined team.
+        const identifiedMembers = [];
+
+        // Iterates over the injected "users" array, extracts those who match with the foundMembers array, and stores it into the "identifiedMembers" array.
+        for (const foundMembersElement of foundMembers) {
+          const foundUser = this.users.find(element => element.id === foundMembersElement);
+          identifiedMembers.push(foundUser);
+        }
+
+        // Set the current "currentTeamName" equals to the "foundTeam.name" property
+        this.currentTeamName = foundTeam.name;
+
+        // Set the value of currentMembers 
+        this.currentMembers = identifiedMembers;
+      } else {
+        return
+      }
+
     }
-
-    // Set the current "currentTeamName" equals to the "foundTeam.name" property
-    this.currentTeamName = foundTeam.name;
-
-    // Set the value of currentMembers 
-    this.currentMembers = identifiedMembers;
-
-
+  },
+  created() {
+    this.getMembers(this.teamId);
   }
 };
 </script>
