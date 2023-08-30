@@ -3,9 +3,10 @@
   <section>
     <h2>{{ currentTeamName }}</h2>
     <ul>
-      <user-item v-for="member in currentMembers" :key="member.id" :name="member.fullName"
+      <user-item v-for="member in currentMembers" :key="member.id" :id="member.id" :name="member.fullName"
         :role="member.role"></user-item>
     </ul>
+    <RouterView></RouterView>
   </section>
 </template>
 

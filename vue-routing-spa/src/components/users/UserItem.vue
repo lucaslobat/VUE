@@ -2,12 +2,13 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="role" :class="roleClass">{{ role }}</div>
+    <RouterLink :to='`teams/:teamId/${id}`'></RouterLink>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'role'],
+  props: ['name', 'role','id'],
   computed: {
     roleClass() {
       if (this.role === 'Engineer') {
