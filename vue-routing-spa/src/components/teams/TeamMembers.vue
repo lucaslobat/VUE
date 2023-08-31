@@ -4,11 +4,11 @@
     <h2 v-if="errorMessage">{{ errorMessage }}</h2>
     <h2>{{ currentTeamName }}</h2>
     <ul>
-      <user-item v-for="member in currentMembers" :key="member.id" :id="member.id" :name="member.fullName"
+      <user-item v-for="member in currentMembers" :key="member.id" :id="member.id" :name="member.fullName" :teamId="teamId"
         :role="member.role"></user-item>
     </ul>
-    <RouterView></RouterView>
   </section>
+  <RouterView></RouterView>
 </template>
 
 <script>
@@ -58,7 +58,6 @@ export default {
         }
       } catch (e) {
         this.errorMessage = "Page not found";
-        console.log(e)
       }
 
     }

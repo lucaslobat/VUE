@@ -2,6 +2,7 @@
 <template>
   <ul>
     <TeamItem v-for="team in teams" :key="team.id" :id="team.id" :name="team.name" :member-count="team.members.length"></TeamItem>
+    <RouterView></RouterView>
   </ul>
 </template>
 
