@@ -4,8 +4,8 @@
     </section>
 </template>
 
-<script> 
+<script>
 export default {
-    props:['selectedUser'],
+    props: ['selectedUser'],
 }
 </script>

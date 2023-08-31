@@ -4,7 +4,7 @@
     <h2 v-if="errorMessage">{{ errorMessage }}</h2>
     <h2>{{ currentTeamName }}</h2>
     <ul>
-      <user-item v-for="member in currentMembers" :key="member.id" :id="member.id" :name="member.fullName" :teamId="teamId"
+      <user-item v-for="member in currentMembers" :key="member.id" :memberId="member.id" :name="member.fullName" :teamId="teamId"
         :role="member.role"></user-item>
     </ul>
   </section>
@@ -15,6 +15,7 @@
 import UserItem from '../users/UserItem.vue';
 
 export default {
+  inheritAttrs:false,
   inject: ['users', 'teams'],
   props: ['teamId'],
   components: {
