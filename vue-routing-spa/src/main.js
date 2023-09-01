@@ -13,13 +13,18 @@ const app = createApp(App);
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    /* { path: "/", redirect:'/teams' }, */
-    { path: "/teams", component: TeamsList, alias: "/"},
+    { path: "/teams", component: TeamsList, alias: "/" },
     {
       path: "/teams/:teamId",
       component: TeamMembers,
       props: true,
-      children: [{ path: "/teams/:teamId/:selectedUser", component: SelectedUser, props: true }],
+      children: [
+        {
+          path: ":selectedUser",
+          component: SelectedUser,
+          props: true,
+        },
+      ],
     },
     { path: "/users", component: UserList },
     //This route accepts dynamic values and render TeamMembers

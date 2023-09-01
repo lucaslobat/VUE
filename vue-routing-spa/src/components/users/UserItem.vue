@@ -2,7 +2,7 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="role" :class="roleClass">{{ role }}</div>
-    <RouterLink :to='`/teams/${teamId}/${memberId}`'>Select User</RouterLink>
+    <RouterLink v-if="this.$route.params.teamId" :to='`/teams/${teamId}/${memberId}`'>See user id</RouterLink>
   </li>
 </template>
 
