@@ -2,13 +2,13 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="role" :class="roleClass">{{ role }}</div>
-    <RouterLink v-if="this.$route.params.teamId" :to='`/teams/${teamId}/${memberId}`'>See user id</RouterLink>
+    <RouterLink v-if="this.$route.params.teamId" :to='seeUserLink'>Select User</RouterLink>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name','role','memberId','teamId'],
+  props: ['name', 'role', 'memberId', 'teamId'],
   computed: {
     roleClass() {
       if (this.role === 'Engineer') {
@@ -19,6 +19,12 @@ export default {
       }
       return null;
     },
+    /* seeUserLink(){
+      return `/teams/${this.teamId}/${this.memberId}`
+    } */
+    seeUserLink() {
+        return { name: 'selectedUser', params:{selectedUser: this.memberId} }
+    }
   },
 };
 </script>

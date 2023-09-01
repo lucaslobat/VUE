@@ -3,15 +3,28 @@
     <nav>
       <ul>
         <li>
-          <RouterLink to="/teams">Teams</RouterLink>
+          <RouterLink :to="teamRoute">Teams</RouterLink>
         </li>
         <li>
-          <RouterLink to="/users">Users</RouterLink>
+          <RouterLink :to="usersRoute">Users</RouterLink>
         </li>
       </ul>
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  computed:{
+    teamRoute(){
+      return {name:'teams'}
+    },
+    usersRoute(){
+      return {name:'users'}
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {
