@@ -4,7 +4,9 @@
 
 <style scoped>
 footer {
-    margin: 0.5rem 0;
+    position: relative;
+    bottom:-5rem;
+    padding:2rem;
     background-color: #cccc;
     text-align: center;
 
