@@ -1,7 +1,8 @@
 <!-- This component renders a list of all the available teams. Receives the 'teams' varai -->
 <template>
   <ul>
-    <TeamItem v-for="team in teams" :key="team.id" :id="team.id" :name="team.name" :member-count="team.members.length"></TeamItem>
+    <TeamItem v-for="team in teams" :key="team.id" :id="team.id" :name="team.name" :member-count="team.members.length">
+    </TeamItem>
     <RouterView></RouterView>
   </ul>
 </template>
@@ -14,6 +15,7 @@ export default {
     TeamItem,
   },
   inject: ['teams'],
+
 };
 </script>
 

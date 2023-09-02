@@ -23,7 +23,7 @@ export default {
       return `/teams/${this.teamId}/${this.memberId}`
     } */
     seeUserLink() {
-        return { name: 'selectedUser', params:{selectedUser: this.memberId} }
+      return { name: 'selectedUser', params: { selectedUser: this.memberId }}
     }
   },
 };

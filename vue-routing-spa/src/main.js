@@ -13,19 +13,10 @@ const app = createApp(App);
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/teams", name: "teams", component: TeamsList, alias: "/" },
-    {
-      path: "/teams/:teamId",
-      name: "teamId",
-      component: TeamMembers,
-      props: true,
-      children: [
-        {
-          path: ":selectedUser",
-          name: "selectedUser",
-          component: SelectedUser,
-          props: true,
-        },
+    { path: '/', redirect:{name:'teams'}},
+    { path: "/teams", name: "teams", component: TeamsList},
+    { path: "/teams/:teamId", name: "teamId", component: TeamMembers, props: true, children: [
+        { path: ":selectedUser", name: "selectedUser", component: SelectedUser, props: true }
       ],
     },
     { path: "/users", name: "users", component: UserList },
