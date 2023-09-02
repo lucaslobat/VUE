@@ -1,11 +1,12 @@
 <template>
-  <the-navigation ></the-navigation>
+  <the-navigation></the-navigation>
   <main>
     <!-- <button @click="submitForm">Submit form</button> -->
 
     <!-- Component matched by the route will be rendered here -->
     <RouterView></RouterView>
   </main>
+  <RouterView name="footer"></RouterView>
 </template>
 
 <script>
@@ -16,7 +17,7 @@ export default {
   components: {
     TheNavigation,
     TeamMembers
-},
+  },
   data() {
     return {
       teams: [
@@ -40,7 +41,7 @@ export default {
     };
   },
   methods: {
-    submitForm(){
+    submitForm() {
       setTimeout(() => {
         this.$router.push('/users')
       }, 2000)
