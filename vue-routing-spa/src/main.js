@@ -11,6 +11,8 @@ import PageFooter from "./components/nav/PageFooter.vue";
 
 const app = createApp(App);
 
+const isAuthenticated = false;
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -42,7 +44,16 @@ const router = createRouter({
     { path: "/:notFound(.*)", component: NotFound },
   ],
   linkActiveClass: "active-route",
+  scrollBehavior(to, from, savedPosition) {},
 });
+
+//Global Navigation Guards
+router.beforeEach((to, from) => {
+  //If the user is authenticated and he is going to a route that is not 'teams' return him to the 'teams' route
+  if(!isAuthenticated && to.name !== 'teams'){
+    return {name:'teams'}
+  }
+})
 
 app.use(router);
 app.mount("#app");
