@@ -11,7 +11,7 @@
 
 <script>
 import TheNavigation from './components/nav/TheNavigation.vue';
-import TeamMembers from './components/teams/TeamMembers.vue';
+import TeamMembers from './router views/TeamMembers.vue';
 
 export default {
   components: {
