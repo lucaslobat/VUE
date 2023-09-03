@@ -40,6 +40,9 @@ const router = createRouter({
       path: "/users",
       name: "users",
       components: { default: UserList, footer: PageFooter },
+      beforeEnter: (to, from ) => {
+        return false
+      }
     },
     { path: "/:notFound(.*)", component: NotFound },
   ],
@@ -48,12 +51,12 @@ const router = createRouter({
 });
 
 //Global Navigation Guards
-router.beforeEach((to, from) => {
-  //If the user is authenticated and he is going to a route that is not 'teams' return him to the 'teams' route
-  if(!isAuthenticated && to.name !== 'teams'){
+/* router.beforeEach((to, from) => {
+  //If the user is not authenticated and trying to go the named 'users' route, return him to the 'teams' route.
+  if(!isAuthenticated && to.name === 'users'){
     return {name:'teams'}
   }
-})
+}) */
 
 app.use(router);
 app.mount("#app");
