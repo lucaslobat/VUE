@@ -65,8 +65,8 @@ body {
   margin: 0;
 }
 
-.v-enter-from{
-  opacity:0;
+.v-enter-from {
+  opacity: 0;
   transform: translateY(-2rem);
 }
 
@@ -76,9 +76,25 @@ body {
 }
 
 .v-enter-to {
-  opacity:1;
+  opacity: 1;
   transform: translateY(0rem);
 }
+
+.v-leave-from {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.v-leave-active {
+  transition: all 0.2s ease-in;
+}
+
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-2rem);
+}
+
+
 button {
   font: inherit;
   padding: 0.5rem 2rem;
