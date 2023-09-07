@@ -86,7 +86,7 @@ button:active {
 
 .transform {
   /* transform: translateX(-5rem); */
-  animation: slide-animation 0.3s ease-out;
+  animation: slide-animation 0.3s ease-out forwards;
 }
 
 @keyframes slide-animation {
@@ -95,7 +95,7 @@ button:active {
   }
 
   50% {
-    transform: translateX(-10rem) scale(1.5)
+    transform: translateX(-10rem) scale(1.2)
   }
 
   100% {
