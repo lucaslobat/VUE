@@ -4,10 +4,22 @@
     <button @click="startTransformation">Animate</button>
   </div>
 
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
+  <!-- Modal -->
+  <Transition>
+    <base-modal @close="hideDialog" v-if="dialogIsVisible">
+      <p>This is a test dialog!</p>
+      <button @click="hideDialog">Close it!</button>
+    </base-modal>
+  </Transition>
+
+  <div class="container">
+    <Transition>
+      <p v-if="isParagraphVisible">This paragraph is controlled by the Transition element</p>
+    </Transition>
+    <button @click="toggleParagraph">Toggle paragraph</button>
+  </div>
+
+
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
@@ -18,7 +30,8 @@ export default {
   data() {
     return {
       dialogIsVisible: false,
-      isTransforming: false
+      isTransforming: false,
+      isParagraphVisible: false
     };
   },
   methods: {
@@ -28,8 +41,11 @@ export default {
     hideDialog() {
       this.dialogIsVisible = false;
     },
-    startTransformation(){
+    startTransformation() {
       this.isTransforming = true;
+    },
+    toggleParagraph() {
+      this.isParagraphVisible = !this.isParagraphVisible;
     }
 
   },
@@ -49,6 +65,20 @@ body {
   margin: 0;
 }
 
+.v-enter-from{
+  opacity:0;
+  transform: translateY(-2rem);
+}
+
+.v-enter-active {
+  transition: all 0.2s ease-out;
+
+}
+
+.v-enter-to {
+  opacity:1;
+  transform: translateY(0rem);
+}
 button {
   font: inherit;
   padding: 0.5rem 2rem;
@@ -82,25 +112,5 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
-}
-
-.transform {
-  /* transform: translateX(-5rem); */
-  animation: slide-animation 0.3s ease-out forwards;
-}
-
-@keyframes slide-animation {
-  0%{
-    transform: translateX(1);
-  }
-
-  50% {
-    transform: translateX(-10rem) scale(1.2)
-  }
-
-  100% {
-    transform: translateX(-15rem) scale(1);
-  }
-  
 }
 </style>
