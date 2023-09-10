@@ -1,8 +1,10 @@
 <template>
-  <div class="backdrop" @click="$emit('close')"></div>
-  <dialog open>
-    <slot></slot>
-  </dialog>
+  <div class="backdrop">
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <slot></slot>
+    </dialog>
+  </div>
 </template>
 
 <script>
@@ -12,16 +14,6 @@ export default {
 </script>
 
 <style scoped>
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
 dialog {
   position: fixed;
   top: 30vh;
@@ -35,5 +27,43 @@ dialog {
   z-index: 100;
   border: none;
 
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-enter-from {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.modal-enter-active {
+  transition: all 0.2s ease-in;
+}
+
+.modal-enter-to {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.modal-leave-from {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.modal-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.modal-leave-to {
+  opacity: 0;
+  transform: translateY(2rem);
 }
 </style>

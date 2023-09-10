@@ -5,7 +5,7 @@
   </div>
 
   <!-- Modal -->
-  <Transition>
+  <Transition name="modal">
     <base-modal @close="hideDialog" v-if="dialogIsVisible">
       <p>This is a test dialog!</p>
       <button @click="hideDialog">Close it!</button>
@@ -13,7 +13,7 @@
   </Transition>
 
   <div class="container">
-    <Transition>
+    <Transition name="paragraph">
       <p v-if="isParagraphVisible">This paragraph is controlled by the Transition element</p>
     </Transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -65,33 +65,16 @@ body {
   margin: 0;
 }
 
-.v-enter-from {
+.paragraph-enter-from,
+.paragraph-leave-to {
   opacity: 0;
   transform: translateY(-2rem);
 }
 
-.v-enter-active {
+.paragraph-enter-active,
+.paragraph-leave-active {
   transition: all 0.2s ease-out;
 
-}
-
-.v-enter-to {
-  opacity: 1;
-  transform: translateY(0rem);
-}
-
-.v-leave-from {
-  opacity: 1;
-  transform: translateY(0rem);
-}
-
-.v-leave-active {
-  transition: all 0.2s ease-in;
-}
-
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-2rem);
 }
 
 
@@ -129,4 +112,6 @@ button:active {
   border: 2px solid #ccc;
   border-radius: 12px;
 }
+
+
 </style>
