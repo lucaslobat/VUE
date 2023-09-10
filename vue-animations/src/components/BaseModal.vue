@@ -1,15 +1,19 @@
 <template>
-  <div class="backdrop">
-    <div @click="$emit('close')"></div>
-    <dialog open>
+  <!-- This div adds a backdrop when the modal is open -->
+  <div v-if="open" class="backdrop"></div>
+
+  <!-- Transition element added to only animate the dialog element -->
+  <Transition name="modal">
+    <dialog open v-if="open">
+      <!-- Emits the event "close" to the parent component whenever any element inside of "slot" get clicked -->
       <slot></slot>
     </dialog>
-  </div>
+  </Transition>
 </template>
 
 <script>
 export default {
-  emits: ['close'],
+  props: ['open']
 };
 </script>
 
@@ -45,7 +49,7 @@ dialog {
 }
 
 .modal-enter-active {
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-out;
 }
 
 .modal-enter-to {
@@ -59,7 +63,7 @@ dialog {
 }
 
 .modal-leave-active {
-  transition: all 0.2s ease-out;
+  transition: all 0.2s ease-in;
 }
 
 .modal-leave-to {

@@ -5,12 +5,12 @@
   </div>
 
   <!-- Modal -->
-  <Transition name="modal">
-    <base-modal @close="hideDialog" v-if="dialogIsVisible">
-      <p>This is a test dialog!</p>
-      <button @click="hideDialog">Close it!</button>
-    </base-modal>
-  </Transition>
+  <!-- Passes two elements to baseModal's slot and pass the variable "dialogIsVisible" to baseModal to control
+        its rendering-->
+  <base-modal :open="dialogIsVisible">
+    <p>This is a test dialog!</p>
+    <button @click="hideDialog">Close</button>
+  </base-modal>
 
   <div class="container">
     <Transition name="paragraph">
@@ -65,6 +65,8 @@ body {
   margin: 0;
 }
 
+
+
 .paragraph-enter-from,
 .paragraph-leave-to {
   opacity: 0;
@@ -112,6 +114,4 @@ button:active {
   border: 2px solid #ccc;
   border-radius: 12px;
 }
-
-
 </style>
