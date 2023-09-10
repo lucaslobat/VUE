@@ -13,7 +13,7 @@
   </base-modal>
 
   <div class="container">
-    <Transition name="paragraph">
+    <Transition name="paragraph" >
       <p v-if="isParagraphVisible">This paragraph is controlled by the Transition element</p>
     </Transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -23,6 +23,13 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
+
+  <div class="container">
+    <Transition name="fadeButtons" mode="out-in">
+      <button @click="showUsers" v-if="!usersAreVisible">Show users</button>
+      <button @click="hideUsers" v-else>Hide users</button>
+    </Transition>
+  </div>
 </template>  
 
 <script>
@@ -31,10 +38,17 @@ export default {
     return {
       dialogIsVisible: false,
       isTransforming: false,
-      isParagraphVisible: false
+      isParagraphVisible: false,
+      usersAreVisible: false
     };
   },
   methods: {
+    showUsers() {
+      this.usersAreVisible = true;
+    },
+    hideUsers() {
+      this.usersAreVisible = false;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -114,4 +128,22 @@ button:active {
   border: 2px solid #ccc;
   border-radius: 12px;
 }
+
+.fadeButtons-enter-from, .fadeButtons-leave-to{
+  opacity:0
+}
+.fadeButtons-enter-active{
+  transition: opacity 0.2s ease-out;
+}
+
+.fadeButtons-leave-active {
+  transition: opacity 0.2s ease-in;
+}
+.fadeButtons-enter-to,.fadeButtons-leave-from{
+  opacity:1
+}
+
+
+
+
 </style>
