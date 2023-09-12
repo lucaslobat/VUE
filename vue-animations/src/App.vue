@@ -1,5 +1,10 @@
 <template>
   <div class="container">
+    <UsersList></UsersList>
+  </div>
+
+
+  <div class="container">
     <div class="block" :class="{ transform: isTransforming }"></div>
     <button @click="startTransformation">Animate</button>
   </div>
@@ -13,8 +18,15 @@
   </base-modal>
 
   <div class="container">
-    <Transition name="paragraph" >
-      <p v-if="isParagraphVisible">This paragraph is controlled by the Transition element</p>
+    <Transition name="paragraph" 
+    @before-enter="onBeforeEnter" 
+    @enter="onEnter" 
+    @after-enter="onAfterEnter"
+    @before-leave="onBeforeLeave"
+    @leave="onLeave"
+    @after-leave="onAfterLeave">
+      <p v-if="isParagraphVisible">This paragraph is controlled
+        by the Transition element</p>
     </Transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
   </div>
@@ -33,36 +45,57 @@
 </template>  
 
 <script>
-export default {
-  data() {
-    return {
-      dialogIsVisible: false,
-      isTransforming: false,
-      isParagraphVisible: false,
-      usersAreVisible: false
-    };
-  },
-  methods: {
-    showUsers() {
-      this.usersAreVisible = true;
-    },
-    hideUsers() {
-      this.usersAreVisible = false;
-    },
-    showDialog() {
-      this.dialogIsVisible = true;
-    },
-    hideDialog() {
-      this.dialogIsVisible = false;
-    },
-    startTransformation() {
-      this.isTransforming = true;
-    },
-    toggleParagraph() {
-      this.isParagraphVisible = !this.isParagraphVisible;
-    }
+import UsersList from './components/UsersList.vue';
 
-  },
+export default {
+  components:{UsersList},
+    data() {
+        return {
+            dialogIsVisible: false,
+            isTransforming: false,
+            isParagraphVisible: false,
+            usersAreVisible: false
+        };
+    },
+    methods: {
+        showUsers() {
+            this.usersAreVisible = true;
+        },
+        hideUsers() {
+            this.usersAreVisible = false;
+        },
+        showDialog() {
+            this.dialogIsVisible = true;
+        },
+        hideDialog() {
+            this.dialogIsVisible = false;
+        },
+        startTransformation() {
+            this.isTransforming = true;
+        },
+        toggleParagraph() {
+            this.isParagraphVisible = !this.isParagraphVisible;
+        },
+        onBeforeEnter(targetElement) {
+            console.log("Before enter:", targetElement);
+        },
+        onEnter(targetElement) {
+            console.log("Enter:", targetElement);
+        },
+        onAfterEnter(targetElement) {
+            console.log("After enter:", targetElement);
+        },
+        onBeforeLeave(targetElement) {
+            console.log("Before leave:", targetElement);
+        },
+        onLeave(targetElement) {
+            console.log("Leave:", targetElement);
+        },
+        onAfterLeave(targetElement) {
+            console.log("After leave:", targetElement);
+        }
+    },
+    components: { UsersList }
 };
 </script>
 
@@ -78,21 +111,6 @@ html {
 body {
   margin: 0;
 }
-
-
-
-.paragraph-enter-from,
-.paragraph-leave-to {
-  opacity: 0;
-  transform: translateY(-2rem);
-}
-
-.paragraph-enter-active,
-.paragraph-leave-active {
-  transition: all 0.2s ease-out;
-
-}
-
 
 button {
   font: inherit;
@@ -129,21 +147,21 @@ button:active {
   border-radius: 12px;
 }
 
-.fadeButtons-enter-from, .fadeButtons-leave-to{
-  opacity:0
+.fadeButtons-enter-from,
+.fadeButtons-leave-to {
+  opacity: 0.3
 }
-.fadeButtons-enter-active{
+
+.fadeButtons-enter-active {
   transition: opacity 0.2s ease-out;
 }
 
 .fadeButtons-leave-active {
   transition: opacity 0.2s ease-in;
 }
-.fadeButtons-enter-to,.fadeButtons-leave-from{
-  opacity:1
+
+.fadeButtons-enter-to,
+.fadeButtons-leave-from {
+  opacity: 1
 }
-
-
-
-
 </style>
