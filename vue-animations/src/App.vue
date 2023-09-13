@@ -1,4 +1,10 @@
 <template>
+  <RouterView v-slot="{ Component }">
+    <Transition name="fadeButtons" mode="out-in">
+      <component :is="Component"></component>
+    </Transition>
+  </RouterView>
+
   <div class="container">
     <UsersList></UsersList>
   </div>
