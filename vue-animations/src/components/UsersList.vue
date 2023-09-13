@@ -47,13 +47,23 @@ li {
 .usersList-move,
 .usersList-enter-active,
 .usersList-leave-active {
-    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: all 0.5s ease-out;
 }
 
-.usersList-enter-from,
-.usersList-leave-to {
+.usersList-enter-from {
     opacity: 0;
-    transform: scaleY(0.01) translate(30px, 0);
+    transform: translateX(2rem);
+}
+
+.usersList-leave-to{
+    opacity: 0;
+    transform: translateX(-2rem);
+}
+
+.usersList-enter-to,
+.usersList.leave-from{
+    opacity: 1;
+    transform: translateX(0rem);
 }
 
 .usersList-leave-active {

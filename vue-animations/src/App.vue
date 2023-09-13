@@ -9,22 +9,11 @@
     <button @click="startTransformation">Animate</button>
   </div>
 
-  <!-- Modal -->
-  <!-- Passes two elements to baseModal's slot and pass the variable "dialogIsVisible" to baseModal to control
-        its rendering-->
-  <base-modal :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close</button>
-  </base-modal>
+
 
   <div class="container">
-    <Transition name="paragraph" 
-    @before-enter="onBeforeEnter" 
-    @enter="onEnter" 
-    @after-enter="onAfterEnter"
-    @before-leave="onBeforeLeave"
-    @leave="onLeave"
-    @after-leave="onAfterLeave">
+    <Transition name="paragraph" @before-enter="onBeforeEnter" @enter="onEnter" @after-enter="onAfterEnter"
+      @before-leave="onBeforeLeave" @leave="onLeave" @after-leave="onAfterLeave">
       <p v-if="isParagraphVisible">This paragraph is controlled
         by the Transition element</p>
     </Transition>
@@ -33,6 +22,13 @@
 
 
   <div class="container">
+    <!-- Modal -->
+    <!-- Passes two elements to baseModal's slot and pass the variable "dialogIsVisible" to baseModal to control
+        its rendering-->
+    <base-modal :open="dialogIsVisible">
+      <p>This is a test dialog!</p>
+      <button @click="hideDialog">Close</button>
+    </base-modal>
     <button @click="showDialog">Show Dialog</button>
   </div>
 
@@ -48,54 +44,54 @@
 import UsersList from './components/UsersList.vue';
 
 export default {
-  components:{UsersList},
-    data() {
-        return {
-            dialogIsVisible: false,
-            isTransforming: false,
-            isParagraphVisible: false,
-            usersAreVisible: false
-        };
+  components: { UsersList },
+  data() {
+    return {
+      dialogIsVisible: false,
+      isTransforming: false,
+      isParagraphVisible: false,
+      usersAreVisible: false
+    };
+  },
+  methods: {
+    showUsers() {
+      this.usersAreVisible = true;
     },
-    methods: {
-        showUsers() {
-            this.usersAreVisible = true;
-        },
-        hideUsers() {
-            this.usersAreVisible = false;
-        },
-        showDialog() {
-            this.dialogIsVisible = true;
-        },
-        hideDialog() {
-            this.dialogIsVisible = false;
-        },
-        startTransformation() {
-            this.isTransforming = true;
-        },
-        toggleParagraph() {
-            this.isParagraphVisible = !this.isParagraphVisible;
-        },
-        onBeforeEnter(targetElement) {
-            console.log("Before enter:", targetElement);
-        },
-        onEnter(targetElement) {
-            console.log("Enter:", targetElement);
-        },
-        onAfterEnter(targetElement) {
-            console.log("After enter:", targetElement);
-        },
-        onBeforeLeave(targetElement) {
-            console.log("Before leave:", targetElement);
-        },
-        onLeave(targetElement) {
-            console.log("Leave:", targetElement);
-        },
-        onAfterLeave(targetElement) {
-            console.log("After leave:", targetElement);
-        }
+    hideUsers() {
+      this.usersAreVisible = false;
     },
-    components: { UsersList }
+    showDialog() {
+      this.dialogIsVisible = true;
+    },
+    hideDialog() {
+      this.dialogIsVisible = false;
+    },
+    startTransformation() {
+      this.isTransforming = true;
+    },
+    toggleParagraph() {
+      this.isParagraphVisible = !this.isParagraphVisible;
+    },
+    onBeforeEnter(targetElement) {
+      console.log("Before enter:", targetElement);
+    },
+    onEnter(targetElement) {
+      console.log("Enter:", targetElement);
+    },
+    onAfterEnter(targetElement) {
+      console.log("After enter:", targetElement);
+    },
+    onBeforeLeave(targetElement) {
+      console.log("Before leave:", targetElement);
+    },
+    onLeave(targetElement) {
+      console.log("Leave:", targetElement);
+    },
+    onAfterLeave(targetElement) {
+      console.log("After leave:", targetElement);
+    }
+  },
+  components: { UsersList }
 };
 </script>
 
