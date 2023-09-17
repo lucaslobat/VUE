@@ -1,17 +1,30 @@
 <template>
   <base-container title="Vuex">
-    <h2>Counter <span>{{$store.state.counter}}</span></h2>
-    <button> Add 1</button>
+    <h2>Counter <span>{{ counter }}</span></h2>
+    <button @click="addOne"> Add 1</button>
+    <IncrementByOneButton></IncrementByOneButton>
   </base-container>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
+import IncrementByOneButton from './components/IncrementByOneButton.vue';
 
 export default {
   components: {
     BaseContainer,
+    IncrementByOneButton
   },
+  methods: {
+    addOne(){
+      this.$store.commit('incrementByOne');
+    }
+  },
+  computed: {
+    counter() {
+      return this.$store.state.counter;
+    }
+  }
 };
 </script>
 

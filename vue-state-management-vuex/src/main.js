@@ -1,16 +1,21 @@
-import { createApp } from 'vue';
-import { createStore } from 'vuex';
+import { createApp } from "vue";
+import { createStore } from "vuex";
 
-import App from './App.vue';
+import App from "./App.vue";
 
 const app = createApp(App);
 const store = createStore({
-    state(){
-        return  {
-            counter:0
-        }
-    }
-})
+  state() {
+    return {
+      counter: 0,
+    };
+  },
+  mutations: {
+    incrementByOne(state) {
+      state.counter++;
+    },
+  },
+});
 
 app.use(store);
-app.mount('#app');
+app.mount("#app");
