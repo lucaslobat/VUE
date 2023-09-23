@@ -6,7 +6,9 @@
 export default {
     methods: {
         incrementByOne(){
-            this.$store.commit('increaseByOne',10)
+            this.$store.commit('increaseByOne',{
+                amount:10
+            })
         }
     }
 }
