@@ -1,5 +1,8 @@
 <template>
   <base-container title="Vuex">
+    <ul>
+      <li v-for="todo in doneTodos">{{ todo.text }}</li>
+    </ul>
     <h2>Counter <span>{{ counter }}</span></h2>
     <button @click="addOne"> Add 1</button>
     <IncrementByOneButton></IncrementByOneButton>
@@ -15,14 +18,21 @@ export default {
     BaseContainer,
     IncrementByOneButton
   },
+  /*   data() {
+      return { todos: this.$store.state.todos }
+  
+    }, */
   methods: {
-    addOne(){
+    addOne() {
       this.$store.commit('incrementByOne');
     }
   },
   computed: {
     counter() {
       return this.$store.state.counter;
+    },
+    doneTodos() {
+      return this.$store.getters.doneTodos;
     }
   }
 };

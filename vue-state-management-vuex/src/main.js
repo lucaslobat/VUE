@@ -7,15 +7,24 @@ const app = createApp(App);
 
 const store = createStore({
   state: {
-      counter: 0,
+    todos: [
+      { id: 1, text: "Learn Vue.js", done: true },
+      { id: 2, text: "Go for a walk", done: false },
+    ],
+    counter: 0,
   },
   mutations: {
     incrementByOne(state) {
       state.counter++;
     },
-    increaseByOne(state, payload){
+    increaseByOne(state, payload) {
       state.counter += payload.amount;
-    }
+    },
+  },
+  getters: {
+    doneTodos(state) {
+      return state.todos.filter((todo) => todo.done);
+    },
   },
 });
 
