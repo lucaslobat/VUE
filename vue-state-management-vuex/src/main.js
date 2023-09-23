@@ -4,16 +4,18 @@ import { createStore } from "vuex";
 import App from "./App.vue";
 
 const app = createApp(App);
+
 const store = createStore({
-  state() {
-    return {
+  state: {
       counter: 0,
-    };
   },
   mutations: {
     incrementByOne(state) {
       state.counter++;
     },
+    increaseByOne(state, payload){
+      state.counter += payload;
+    }
   },
 });
 
