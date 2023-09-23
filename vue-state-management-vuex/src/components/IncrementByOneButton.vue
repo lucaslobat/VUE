@@ -5,10 +5,8 @@
 <script>
 export default {
     methods: {
-        incrementByOne(){
-            this.$store.commit('increaseByOne',{
-                amount:10
-            })
+        incrementByOne() {
+            this.$store.commit({ type: 'increaseByOne', amount: 10 })
         }
     }
 }
