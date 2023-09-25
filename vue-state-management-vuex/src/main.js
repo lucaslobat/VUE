@@ -19,7 +19,7 @@ const store = createStore({
     incrementByOne(state) {
       state.counter++;
     },
-    increaseByOne(state, payload) {
+    increaseByTen(state, payload) {
       state.counter += payload.amount;
     },
   },
@@ -40,7 +40,13 @@ const store = createStore({
         commit("incrementByOne");
       }, 1000);
     },
+    asyncIncreaseByTen({commit},payload){
+      setTimeout(() => {
+        commit("increaseByTen",payload);
+      }, 500);
+    }
   },
+  
 });
 
 app.use(store);

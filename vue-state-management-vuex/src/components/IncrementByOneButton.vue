@@ -1,12 +1,12 @@
 <template>
-    <button @click="incrementByOne">Add 10</button>
+    <button @click="incrementByTen">Add 10</button>
 </template>
 
 <script>
 export default {
     methods: {
-        incrementByOne() {
-            this.$store.commit({ type: 'increaseByOne', amount: 10 })
+        incrementByTen() {
+            this.$store.dispatch({ type: 'asyncIncreaseByTen', amount: 10 })
         }
     }
 }
