@@ -6,6 +6,7 @@ import App from "./App.vue";
 const app = createApp(App);
 
 const store = createStore({
+  /* States */
   state: {
     todos: [
       { id: 1, text: "Learn Vue.js", done: true },
@@ -13,6 +14,7 @@ const store = createStore({
     ],
     counter: 0,
   },
+  /* Mutations */
   mutations: {
     incrementByOne(state) {
       state.counter++;
@@ -21,6 +23,7 @@ const store = createStore({
       state.counter += payload.amount;
     },
   },
+  /* Getters */
   getters: {
     getTodos(state) {
       return state.todos;
@@ -28,6 +31,14 @@ const store = createStore({
     doneTodos(_, getters) {
       const allTodos = getters.getTodos;
       return allTodos.filter((todo) => todo.done);
+    },
+  },
+  /* Actions */
+  actions: {
+    asyncIncrementByOne({ commit }) {
+      setTimeout(() => {
+        commit("incrementByOne");
+      }, 1000);
     },
   },
 });

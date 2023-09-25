@@ -24,7 +24,7 @@ export default {
     }, */
   methods: {
     addOne() {
-      this.$store.commit('incrementByOne');
+      this.$store.dispatch('asyncIncrementByOne');
     }
   },
   computed: {
