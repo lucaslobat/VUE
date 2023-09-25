@@ -22,8 +22,12 @@ const store = createStore({
     },
   },
   getters: {
-    doneTodos(state) {
-      return state.todos.filter((todo) => todo.done);
+    getTodos(state) {
+      return state.todos;
+    },
+    doneTodos(_, getters) {
+      const allTodos = getters.getTodos;
+      return allTodos.filter((todo) => todo.done);
     },
   },
 });
