@@ -25,10 +25,13 @@ const store = createStore({
   },
   /* Getters */
   getters: {
+    getCounter(state){
+      return state.counter;
+    },
     getTodos(state) {
       return state.todos;
     },
-    doneTodos(_, getters) {
+    getDoneTodos(_, getters) {
       const allTodos = getters.getTodos;
       return allTodos.filter((todo) => todo.done);
     },
