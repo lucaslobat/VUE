@@ -8,6 +8,7 @@ const app = createApp(App);
 const store = createStore({
   /* States */
   state: {
+    isUserAuthenticated: false,
     todos: [
       { id: 1, text: "Learn Vue.js", done: true },
       { id: 2, text: "Go for a walk", done: false },
@@ -22,10 +23,13 @@ const store = createStore({
     increaseByTen(state, payload) {
       state.counter += payload.amount;
     },
+    userAuthentication(state, payload) {
+      state.isUserAuthenticated = payload.userAuthState;
+    },
   },
   /* Getters */
   getters: {
-    getCounter(state){
+    getCounter(state) {
       return state.counter;
     },
     getTodos(state) {
@@ -35,6 +39,9 @@ const store = createStore({
       const allTodos = getters.getTodos;
       return allTodos.filter((todo) => todo.done);
     },
+    getUserAuthState(state) {
+      return state.isUserAuthenticated;
+    },
   },
   /* Actions */
   actions: {
@@ -43,13 +50,18 @@ const store = createStore({
         commit("incrementByOne");
       }, 1000);
     },
-    asyncIncreaseByTen({commit},payload){
+    asyncIncreaseByTen({ commit }, payload) {
       setTimeout(() => {
-        commit("increaseByTen",payload);
+        commit("increaseByTen", payload);
       }, 500);
-    }
+    },
+    userLogin({ commit }) {
+      commit("userAuthentication", { userAuthState: true });
+    },
+    userLogoff({ commit }) {
+      commit("userAuthentication", { userAuthState: false });
+    },
   },
-  
 });
 
 app.use(store);

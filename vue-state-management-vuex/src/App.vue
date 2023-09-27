@@ -1,24 +1,30 @@
 <template>
-  <base-container title="Vuex">
+  <BaseContainer title="Vuex" v-if="getUserAuthState">
     <ul>
       <li v-for="todo in getDoneTodos">{{ todo.text }}</li>
     </ul>
     <h2>Counter <span>{{ getCounter }}</span></h2>
     <button @click="addOne"> Add 1</button>
     <IncrementByTenButton></IncrementByTenButton>
-  </base-container>
+  </BaseContainer>
+
+  <BaseContainer title="Authentication">
+    <UserAuthentication></UserAuthentication>
+  </BaseContainer>
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 
 import BaseContainer from './components/BaseContainer.vue';
 import IncrementByTenButton from './components/IncrementByTenButton.vue';
+import UserAuthentication from './components/UserAuthentication.vue'
 
 export default {
   components: {
     BaseContainer,
-    IncrementByTenButton
+    IncrementByTenButton,
+    UserAuthentication
   },
   /*   data() {
       return { todos: this.$store.state.todos }
@@ -30,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCounter','getTodos','getDoneTodos'])
+    ...mapGetters(['getCounter', 'getTodos', 'getDoneTodos', 'getUserAuthState'])
   }
 };
 </script>
