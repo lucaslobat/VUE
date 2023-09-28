@@ -40,29 +40,28 @@ const counterModule = {
 
 /* Todo module */
 const todoModule = {
-  state:{
-
-  },
-  getters:{
-
-  },
-  mutations:{
-
-  },
-  actions:{
-    
-  }
-}
-
-const store = createStore({
-  modules: { counterModule: counterModule },
-  /* States */
   state: {
-    isUserAuthenticated: false,
     todos: [
       { id: 1, text: "Learn Vue.js", done: true },
       { id: 2, text: "Go for a walk", done: false },
     ],
+  },
+  getters: {
+    getTodos(state) {
+      return state.todos;
+    },
+    getDoneTodos(_, getters) {
+      const allTodos = getters.getTodos;
+      return allTodos.filter((todo) => todo.done);
+    },
+  },
+};
+
+const store = createStore({
+  modules: { counterModule: counterModule, todoModule: todoModule },
+  /* States */
+  state: {
+    isUserAuthenticated: false,
   },
   /* Mutations */
   mutations: {
@@ -72,13 +71,6 @@ const store = createStore({
   },
   /* Getters */
   getters: {
-    getTodos(state) {
-      return state.todos;
-    },
-    getDoneTodos(_, getters) {
-      const allTodos = getters.getTodos;
-      return allTodos.filter((todo) => todo.done);
-    },
     getUserAuthState(state) {
       return state.isUserAuthenticated;
     },
