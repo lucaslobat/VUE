@@ -8,6 +8,10 @@
     <IncrementByTenButton></IncrementByTenButton>
   </BaseContainer>
 
+  <BaseContainer title="Using rootState" v-if="getUserAuthState">
+    <p>{{ getTodoState }}</p>
+  </BaseContainer>
+
   <BaseContainer title="Authentication">
     <UserAuthentication></UserAuthentication>
   </BaseContainer>
@@ -36,7 +40,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCounter', 'getTodos', 'getDoneTodos', 'getUserAuthState'])
+    ...mapGetters(['getCounter', 'getTodos', 'getDoneTodos', 'getUserAuthState', 'getTodoState'])
   }
 };
 </script>

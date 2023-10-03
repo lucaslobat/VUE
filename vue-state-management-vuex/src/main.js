@@ -68,6 +68,9 @@ const userAuth = {
     },
   },
   getters: {
+    getTodoState(_One, _Two, rootState) {
+      return rootState.todoModule.todos;
+    },
     getUserAuthState(state) {
       return state.isUserAuthenticated;
     },
