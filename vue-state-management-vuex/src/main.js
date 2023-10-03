@@ -57,25 +57,21 @@ const todoModule = {
   },
 };
 
-const store = createStore({
-  modules: { counterModule: counterModule, todoModule: todoModule },
-  /* States */
+/* User authentication module */
+const userAuth = {
   state: {
     isUserAuthenticated: false,
   },
-  /* Mutations */
   mutations: {
     userAuthentication(state, payload) {
       state.isUserAuthenticated = payload.userAuthState;
     },
   },
-  /* Getters */
   getters: {
     getUserAuthState(state) {
       return state.isUserAuthenticated;
     },
   },
-  /* Actions */
   actions: {
     userLogin({ commit }) {
       commit("userAuthentication", { userAuthState: true });
@@ -83,6 +79,14 @@ const store = createStore({
     userLogoff({ commit }) {
       commit("userAuthentication", { userAuthState: false });
     },
+  },
+};
+
+const store = createStore({
+  modules: {
+    counterModule: counterModule,
+    todoModule: todoModule,
+    userAuth: userAuth,
   },
 });
 
