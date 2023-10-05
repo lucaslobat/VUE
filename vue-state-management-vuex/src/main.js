@@ -8,6 +8,7 @@ const app = createApp(App);
 /* Modules */
 /* Counter module */
 const counterModule = {
+  namespaced: true,
   state: {
     counter: 0,
   },
@@ -40,6 +41,7 @@ const counterModule = {
 
 /* Todo module */
 const todoModule = {
+  namespaced: true,
   state: {
     todos: [
       { id: 1, text: "Learn Vue.js", done: true },
@@ -59,6 +61,7 @@ const todoModule = {
 
 /* User authentication module */
 const userAuth = {
+  namespaced: true,
   state: {
     isUserAuthenticated: false,
   },
@@ -68,18 +71,18 @@ const userAuth = {
     },
   },
   getters: {
-    getTodoState(_One, _Two, rootState) {
+    getTodoState(state, getters, rootState) {
       return rootState.todoModule.todos;
     },
-    getUserAuthState(state) {
+    getUserAuthState(state, getters, rootState) {
       return state.isUserAuthenticated;
     },
   },
   actions: {
-    userLogin({ commit }) {
+    userLogin({ state, commit, rootState }) {
       commit("userAuthentication", { userAuthState: true });
     },
-    userLogoff({ commit }) {
+    userLogoff({ state, commit, rootState }) {
       commit("userAuthentication", { userAuthState: false });
     },
   },

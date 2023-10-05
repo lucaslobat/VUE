@@ -36,11 +36,13 @@ export default {
     }, */
   methods: {
     addOne() {
-      this.$store.dispatch('asyncIncrementByOne');
+      this.$store.dispatch('counterModule/asyncIncrementByOne');
     }
   },
   computed: {
-    ...mapGetters(['getCounter', 'getTodos', 'getDoneTodos', 'getUserAuthState', 'getTodoState'])
+    ...mapGetters('userAuth', ['getUserAuthState', 'getTodoState']),
+    ...mapGetters('todoModule', ['getDoneTodos']),
+    ...mapGetters('counterModule', ['getCounter'])
   }
 };
 </script>

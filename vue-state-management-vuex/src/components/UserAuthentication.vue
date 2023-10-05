@@ -7,10 +7,10 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     methods: {
-        ...mapActions(['userLogin', 'userLogoff'])
+        ...mapActions('userAuth', ['userLogin', 'userLogoff'])
     },
     computed: {
-        ...mapGetters(['getUserAuthState'])
+        ...mapGetters('userAuth', ['getUserAuthState'])
     }
 }
 </script>

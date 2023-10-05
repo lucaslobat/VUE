@@ -13,7 +13,7 @@ export default {
 
         /* ...mapActions(["asyncIncreaseByTen"]), */
 
-        ...mapActions({asyncIBT: 'asyncIncreaseByTen'})
+        ...mapActions('counterModule', { asyncIBT: 'asyncIncreaseByTen' })
 
     }
 }
